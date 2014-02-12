@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   get_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/28 15:59:00 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/12 12:02:03 by npineau          ###   ########.fr       */
+/*   Created: 2014/02/12 11:49:31 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/12 12:28:17 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strtrim(const char *src)
+char	*get_token(char **src)
 {
-	int		i;
-	int		l;
 	char	*new;
+	char	*tmp;
 
-	if (!src)
-		return (NULL);
-	i = 0;
-	l = ft_strlen(src);
-	while (ft_isspace(src[l - 1]) && l > 0)
-		l--;
-	while (ft_isspace(src[i]) && src[i])
-		i++;
-	l -= i;
-	if (l < 0)
-		l = 0;
-	new = ft_strnew(l + 1);
-	if (!new)
-		return (NULL);
-	new = ft_strncpy(new, &src[i], l);
+	while (**src && ft_isspace(**src))
+		(*src)++;
+	tmp = *src;
+	while (*tmp && !ft_isspace(*tmp))
+		tmp++;
+	new = ft_strsub(*src, 0, tmp - *src);
 	return (new);
 }
