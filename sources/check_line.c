@@ -6,13 +6,13 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 15:15:36 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/12 16:41:21 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/12 17:06:14 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+static int	count_space(char *src);
 
-
-int	check_line(char	*line)
+int			check_line(char	*line)
 {
 	if (*line = '\0')
 		return (0);
@@ -34,4 +34,29 @@ int	check_line(char	*line)
 	if (count_space(ft_strtrim(line)) == 2)
 		return (ROOM);
 	return (ERROR);
+}
+
+static int	count_space(char	*src)
+{
+	int	much;
+
+	much = 0;
+	while (*src)
+	{
+		if (ft_isspace(*src))
+			much++;
+		src++;
+	}
+	return (much);
+}
+
+static int	full_digit(char	*src)
+{
+	while (*src)
+	{
+		if (!ft_isdigit(src))
+			return (0);
+		src++;
+	}
+	return (1);
 }
