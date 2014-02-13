@@ -6,11 +6,12 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 15:15:36 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/12 17:06:14 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/13 13:26:46 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 static int	count_space(char *src);
+static int	full_digit(char	*src)
 
 int			check_line(char	*line)
 {

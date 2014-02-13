@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get.c                                              :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/12 15:14:21 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/13 15:23:54 by npineau          ###   ########.fr       */
+/*   Created: 2014/02/13 14:14:25 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/13 14:17:19 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
-#include "parse.h"
+#ifndef PARSE_H
+# define PARSE_H
 
-static void	exe_func(t_func call, t_map *map, char *line);
+void	lem_error(t_map *map, char *line);
+void	lem_start(t_map *map, char *line);
+void	lem_end(t_map *map, char *line);
+void	lem_comment(t_map *map, char *line);
+void	lem_link(t_map *map, char *line);
+void	lem_ant(t_map *map, char *line);
+void	lem_room(t_map *map, char *line);
 
-void	get(int token, t_map *map, char *line)
-{
-	static t_func	func[]=
-	{
-		&lem_error,
-		&lem_start,
-		&lem_end,
-		&lem_comment,
-		&lem_link,
-		&lem_ant,
-		&lem_room
-	};
-
-	exe_func(func[token], map, line);
-}
-
-static void	exe_func(t_func call, t_map *map, char *line)
-{
-	call(map, line);
-}
+#endif
