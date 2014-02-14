@@ -12,7 +12,10 @@
 
 NAME = libft.a
 
-CFLAG = -Wall -Wextra -Werror -O3
+CFLAG = -Wall -Wextra -O3
+ifndef LINUX
+	CFLAG += -Werror
+endif
 
 INCDIR = ../includes/
 
@@ -74,7 +77,8 @@ SRC = ft_strlen.c \
 	  ft_lstdel.c \
 	  ft_lstadd.c \
 	  ft_lstiter.c \
-	  ft_lstmap.c
+	  ft_lstmap.c \
+	  ft_isspace.c
 PSRC = $(addprefix $(SRCDIR)/, $(SRC))
 
 OBJDIR = objects
@@ -83,7 +87,11 @@ POBJ = $(addprefix $(OBJDIR)/, $(OBJ))
 
 RM = rm -Rf
 
-all: $(OBJDIR) $(NAME)
+all: $(NAME)
+
+$(OBJDIR)/%.o: sources/%.c
+	@gcc $(CFLAG) -c $^ -I $(INCDIR) -o $@
+	@echo "Compile $^ to $(OBJDIR)..."
 
 $(OBJDIR):
 	@mkdir $(OBJDIR)
@@ -91,12 +99,10 @@ $(OBJDIR):
 $(NAME): $(POBJ)
 	@ar -q $@ $^
 
+$(POBJ): |$(OBJDIR)
+
 indexation: $(NAME)
 	ranlib $^
-
-$(OBJDIR)/%.o: sources/%.c
-	@gcc $(CFLAG) -c $^ -I $(INCDIR) -o $@
-	@echo "Compile $^ to $(OBJDIR)..."
 
 clean:
 	@($(RM) $(OBJDIR))

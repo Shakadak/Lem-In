@@ -25,6 +25,7 @@ INFO_COLOR = \033[33;01m
 STOP_COLOR = \033[0m
 OK = $(OK_COLOR)--> [OK]$(STOP_COLOR)
 
+LINUX = no
 CFLAGS = -Wall -Wextra
 ifeq ($(DEBUG), yes)
 	CC = clang
@@ -40,19 +41,22 @@ else
 	CC = gcc
 	CFLAGS += -O3
 endif
+ifndef LINUX
+	CFLAGS += -Werror
+endif
 
 TOK = lem_ant.c
-SRC = main.c \
-	  $(addprefix $(TOKDIR)/, $(TOK))
+SRC = main.c
 OBJ = $(SRC:.c=.o) \
 	  $(TOK:.c=.o)
-PSRC = $(addprefix $(SRCDIR)/, $(SRC))
+PSRC = $(addprefix $(SRCDIR)/, $(SRC)) \
+	  $(addprefix $(SRCDIR)/, $(addprefix $(TOKDIR)/, $(TOK)))
 POBJ = $(addprefix $(OBJDIR)/, $(OBJ))
 
 RM = rm -rf
 
 
-all: $(LIBDIR)/$(LIB) $(OBJDIR) $(NAME)
+all: $(LIBDIR)/$(LIB) $(NAME)
 
 $(OBJDIR):
 	@mkdir $(OBJDIR)
@@ -63,10 +67,16 @@ $(LIBDIR)/$(LIB):
 
 $(NAME): $(POBJ)
 	$(CC) -o $@ $^ -L$(LIBDIR) -lft
-	@echo "$(OK_COLOR)raytracer_v1 --> [Done!]$(STOP_COLOR)"
+	@echo "$(OK_COLOR)$(NAME) --> [Done!]$(STOP_COLOR)"
+
+$(POBJ): |$(OBJDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@$(CC) $(CFLAGS) $(INCDIR) -o $@ -c $<
+	@$(CC) $(CFLAGS) -I $(INCDIR) -o $@ -c $<
+	@echo "Compile $< to $@ $(OK)"
+
+$(OBJDIR)/%.o: $(SRCDIR)/$(TOKDIR)/%.c
+	@$(CC) $(CFLAGS) -I $(INCDIR) -o $@ -c $<
 	@echo "Compile $< to $@ $(OK)"
 
 clean:

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lem-in.h"
+#include "libft.h"
 
 static char		**ft_strtrimsplit(char *line);
 static t_lpipe	*new_pipe(t_lroom *target, t_lpipe *next)

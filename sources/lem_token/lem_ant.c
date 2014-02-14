@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "lem-in.h"
+#include "libft.h"
 
 void	lem_ant(t_map *map, char *line)
 {
