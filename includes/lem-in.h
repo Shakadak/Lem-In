@@ -13,6 +13,12 @@
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
+typedef struct		s_coo
+{
+	int				x;
+	int				y;
+}					t_coo;
+
 typedef enum		e_type
 {
 					TANT,
@@ -32,6 +38,7 @@ typedef struct		s_lpipe
 typedef struct		s_lroom
 {
 	t_type			type;
+	t_coo			coo;
 	char			*name;
 	t_lpipe			*link;
 	struct s_lroom	*next;
