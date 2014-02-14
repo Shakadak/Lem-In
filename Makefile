@@ -13,18 +13,19 @@
 NAME = lem-in
 
 SRCDIR = sources
+TOKDIR = lem_token
 OBJDIR = objects
 INCDIR = includes
 LIBDIR = libft
 LIB = libft.a
 
-OK_COLOR = \x1b[32;01m
-ERROR_COLOR = \x1b[31;01m
-INFO_COLOR = \x1b[33;01m
-STOP_COLOR = \x1b[0m
+OK_COLOR = \033[32;01m
+ERROR_COLOR = \033[31;01m
+INFO_COLOR = \033[33;01m
+STOP_COLOR = \033[0m
 OK = $(OK_COLOR)--> [OK]$(STOP_COLOR)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 ifeq ($(DEBUG), yes)
 	CC = clang
 	CFLAGS += -ggdb3 -fstack-protector-all -Wshadow -Wunreachable-code \
@@ -40,8 +41,11 @@ else
 	CFLAGS += -O3
 endif
 
-SRC = main.c
-OBJ = $(SRC:.c=.o)
+TOK = lem_ant.c
+SRC = main.c \
+	  $(addprefix $(TOKDIR)/, $(TOK))
+OBJ = $(SRC:.c=.o) \
+	  $(TOK:.c=.o)
 PSRC = $(addprefix $(SRCDIR)/, $(SRC))
 POBJ = $(addprefix $(OBJDIR)/, $(OBJ))
 
