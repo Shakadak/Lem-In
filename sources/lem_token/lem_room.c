@@ -19,10 +19,16 @@ void	lem_room(t_map *map, char *line)
 		else
 		{
 			if ((current = get_room(tmp[0])) == NULL)
+			{
 				map->map = new_room(tmp, map->map);
+				current = map->map;
+			}
 			else
 				current->coo = new_coo(tmp);
 			map->next = TBASIC;
+			if (map->next == TSTART || map->next == TEND)
+				current->type = map->next;
+		}
 	}
 }
 
