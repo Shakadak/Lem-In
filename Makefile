@@ -6,7 +6,7 @@
 #    By: jibanez <jibanez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/31 16:16:53 by jibanez           #+#    #+#              #
-#    Updated: 2014/02/15 16:37:21 by npineau          ###   ########.fr        #
+#    Updated: 2014/02/15 18:56:28 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ all: $(LIBDIR)/$(LIB) $(NAME)
 
 $(OBJDIR):
 	@mkdir $(OBJDIR)
-	@echo "$(INFO_COLOR)Created objs directory$(STOP_COLOR)"
+	@echo "$(INFO_COLOR)Created $(OBJDIR) directory$(STOP_COLOR)"
 
 $(LIBDIR)/$(LIB):
 	@$(MAKE) -C $(LIBDIR)
@@ -84,13 +84,13 @@ $(OBJDIR)/%.o: $(SRCDIR)/$(TOKDIR)/%.c
 	@echo "Compile $< to $@ $(OK)"
 
 clean:
-	$(MAKE) -C $(LIBDIR) $@
+	@$(MAKE) -C $(LIBDIR) $@
 	@$(RM) $(OBJDIR)
 	@echo "$(INFO_COLOR)Removed $(OBJ)$(STOP_COLOR)"
 
 fclean: clean
-	$(MAKE) -C $(LIBDIR) $@
-	$(RM) $(NAME)
+	@$(MAKE) -C $(LIBDIR) $@
+	@$(RM) $(NAME)
 	@echo "$(INFO_COLOR)Removed $(NAME)$(STOP_COLOR)"
 	@echo "$(OK_COLOR)--> [Clean!]$(STOP_COLOR)"
 

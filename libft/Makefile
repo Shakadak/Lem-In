@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2014/02/15 15:21:28 by npineau          ###   ########.fr        #
+#    Updated: 2014/02/15 18:54:33 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,12 +89,13 @@ all: $(NAME)
 
 $(OBJDIR)/%.o: sources/%.c
 	@gcc $(CFLAG) -c $^ -I $(INCDIR) -o $@
-	@echo "Compile $^ to $(OBJDIR)..."
+	@echo ".\c"
 
 $(OBJDIR):
 	@mkdir $(OBJDIR)
 
 $(NAME): $(POBJ)
+	@echo ""
 	@ar -q $@ $^
 
 $(POBJ): |$(OBJDIR)
