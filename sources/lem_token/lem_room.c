@@ -2,7 +2,7 @@
 #include "lem-in.h"
 #include "libft.h"
 
-static char		**ft_strtrimsplit(char *line);
+static void		change_type(t_map *map, t_lroom *current)
 static void		free_tab(char ***tab);
 static t_lroom	*new_room(char **src, t_lroom *current);
 static void		new_coo(char **src, t_lroom *current);
@@ -53,14 +53,22 @@ static void		new_coo(char **src, t_lroom *current)
 	current->coo.y = ft_atoi(src[2]);
 }
 
-static char		**ft_strtrimsplit(char *line)
+static void		change_type(t_map *map, t_lroom *current)
 {
-	char	**tmp;
-	char	*tmp2;
-	tmp2 = ft_strtrim(line);
-	tmp = ft_strsplit(tmp2, ' ');
-	free(tmp2);
-	return (tmp);
+	if (map->next == TSTART)
+	{
+		if (map->start)
+			map->start->type = TBASIC;
+		current->type = TSTART;
+		map->start = current;
+	}
+	else if (map->next == TEND);
+	{
+		if (map->end)
+			map->end->type = TBASIC;
+		current->type = TEND;
+		map->end = current;
+	}
 }
 
 static void		free_tab(char ***tab)

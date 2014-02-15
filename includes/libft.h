@@ -6,16 +6,15 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 11:00:59 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/12 12:03:15 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 13:36:35 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# ifndef STRING_H
-#  define STRING_H
-#  include <string.h>
-# endif
+# include <string.h>
+
+# define BUFF_SIZE 4096
 
 typedef struct		s_list
 {
@@ -23,6 +22,8 @@ typedef struct		s_list
 	 size_t			content_size;
 	 struct s_list	*next;
 }					t_list;
+
+int		get_next_line(int const fd, char **line);
 
 int		ft_atoi(const char *src);
 char	*ft_itoa(int n);

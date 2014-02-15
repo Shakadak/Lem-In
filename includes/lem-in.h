@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 16:54:50 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/13 15:29:23 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 14:02:11 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,11 @@ typedef struct		s_map
 }					t_map;
 
 typedef void	(*t_func)(t_map *, char *);
+
+char	**ft_strtrimsplit(char *line, char c);
+void	get_map(t_map *map);
+int		check_line(char *line);
+void	get(int token, t_map *map, char *line);
+char	*get_token(char **src);
 
 #endif

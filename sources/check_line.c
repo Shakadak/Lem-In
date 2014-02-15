@@ -6,16 +6,19 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 15:15:36 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/13 13:26:46 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 13:24:19 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	count_space(char *src);
-static int	full_digit(char	*src)
+#include "lem-in.h"
+#include "libft.h"
 
-int			check_line(char	*line)
+static int	count_space(char *src);
+static int	full_digit(char *src);
+
+int			check_line(char *line)
 {
-	if (*line = '\0')
+	if (*line == '\0')
 		return (0);
 	if (line[1] == '#')
 	{
@@ -37,7 +40,7 @@ int			check_line(char	*line)
 	return (ERROR);
 }
 
-static int	count_space(char	*src)
+static int	count_space(char *src)
 {
 	int	much;
 
@@ -51,11 +54,11 @@ static int	count_space(char	*src)
 	return (much);
 }
 
-static int	full_digit(char	*src)
+static int	full_digit(char *src)
 {
 	while (*src)
 	{
-		if (!ft_isdigit(src))
+		if (!ft_isdigit((int)*src))
 			return (0);
 		src++;
 	}

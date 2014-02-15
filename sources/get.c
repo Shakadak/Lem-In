@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 15:14:21 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/13 15:23:54 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 13:12:09 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	exe_func(t_func call, t_map *map, char *line);
 
-void	get(int token, t_map *map, char *line)
+void		get(int token, t_map *map, char *line)
 {
 	static t_func	func[]=
 	{

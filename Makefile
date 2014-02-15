@@ -6,7 +6,7 @@
 #    By: jibanez <jibanez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/31 16:16:53 by jibanez           #+#    #+#              #
-#    Updated: 2014/02/11 16:06:08 by npineau          ###   ########.fr        #
+#    Updated: 2014/02/15 13:31:11 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ STOP_COLOR = \033[0m
 OK = $(OK_COLOR)--> [OK]$(STOP_COLOR)
 
 LINUX = no
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 ifeq ($(DEBUG), yes)
 	CC = clang
 	CFLAGS += -ggdb3 -fstack-protector-all -Wshadow -Wunreachable-code \
@@ -41,12 +41,16 @@ else
 	CC = gcc
 	CFLAGS += -O3
 endif
-ifndef LINUX
-	CFLAGS += -Werror
-endif
 
-TOK = lem_ant.c
-SRC = main.c
+TOK = lem_ant.c \
+	  lem_comment.c \
+	  lem_end.c \
+	  lem_error.c \
+	  lem_link.c \
+	  lem_room.c \
+	  lem_start.c
+SRC = check_line.c get.c get_map.c get_token.c \
+	  main.c
 OBJ = $(SRC:.c=.o) \
 	  $(TOK:.c=.o)
 PSRC = $(addprefix $(SRCDIR)/, $(SRC)) \
@@ -66,7 +70,7 @@ $(LIBDIR)/$(LIB):
 	@$(MAKE) -C $(LIBDIR)
 
 $(NAME): $(POBJ)
-	$(CC) -o $@ $^ -L$(LIBDIR) -lft
+	@$(CC) -o $@ $^ -L$(LIBDIR) -lft
 	@echo "$(OK_COLOR)$(NAME) --> [Done!]$(STOP_COLOR)"
 
 $(POBJ): |$(OBJDIR)

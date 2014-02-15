@@ -6,16 +6,13 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2014/02/10 14:31:07 by npineau          ###   ########.fr        #
+#    Updated: 2014/02/15 13:37:41 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CFLAG = -Wall -Wextra -O3
-ifndef LINUX
-	CFLAG += -Werror
-endif
+CFLAG = -Wall -Wextra -Werror -O3
 
 INCDIR = ../includes/
 
