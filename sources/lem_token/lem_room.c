@@ -1,27 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lem_room.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/02/15 14:29:41 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/15 15:19:28 by npineau          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "lem-in.h"
 #include "libft.h"
+#include "parse.h"
 
-static void		change_type(t_map *map, t_lroom *current)
+static void		change_type(t_map *map, t_lroom *current);
 static void		free_tab(char ***tab);
 static t_lroom	*new_room(char **src, t_lroom *current);
 static void		new_coo(char **src, t_lroom *current);
 
 void	lem_room(t_map *map, char *line)
 {
-	char	**line;
+	char	**tmp;
 	t_lroom	*current;
 
 	if (map->next == TLINK)
 		map->next = TSTOP;
 	else
 	{
-		tmp = ft_strtrimsplit(line);
-		if (!full_digit(tmp[1]) || !full_digit(tmp[2]))
-			lem_error(map, tmp);
-		else
+		tmp = ft_strtrimsplit(line, ' ');
+		if (full_digit(tmp[1]) && full_digit(tmp[2]))
 		{
-			if ((current = get_room(tmp[0])) == NULL)
+			if ((current = get_room(map->map, tmp[0])) == NULL)
 			{
 				map->map = new_room(tmp, map->map);
 				current = map->map;
@@ -30,8 +41,11 @@ void	lem_room(t_map *map, char *line)
 				new_coo(tmp, current);
 			map->next = TBASIC;
 			if (map->next == TSTART || map->next == TEND)
-				current->type = map->next;
+				change_type(map, current);
 		}
+		else
+			lem_error(map, tmp[0]);
+		free_tab(&tmp);
 	}
 }
 
@@ -45,6 +59,7 @@ static t_lroom	*new_room(char **src, t_lroom *current)
 	new->type = TBASIC;
 	new_coo(src, new);
 	new->link = NULL;
+	return (new);
 }
 
 static void		new_coo(char **src, t_lroom *current)
@@ -62,7 +77,7 @@ static void		change_type(t_map *map, t_lroom *current)
 		current->type = TSTART;
 		map->start = current;
 	}
-	else if (map->next == TEND);
+	else if (map->next == TEND)
 	{
 		if (map->end)
 			map->end->type = TBASIC;

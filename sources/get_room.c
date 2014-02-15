@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   get_room.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/11 17:12:18 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 15:24:18 by npineau          ###   ########.fr       */
+/*   Created: 2014/02/15 14:29:32 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/15 15:03:27 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
 #include "lem-in.h"
+#include "libft.h"
 
-void	get_map(t_map *map)
+t_lroom	*get_room(t_lroom *room, char *src)
 {
-	char	*line;
-
-	while (get_next_line(0, &line) > 0)
-	{
-		get(check_line(line), map, line);
-		free(line);
-		line = NULL;
-		if (map->next == TSTOP)
-			break ;
-	}
+	if (room == NULL)
+		return (NULL);
+	if (ft_strequ(room->name, src))
+		return (room);
+	return (get_room(room->next, src));
 }

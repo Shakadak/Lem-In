@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 16:54:50 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 14:02:11 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 15:12:50 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,21 @@ typedef enum		e_token
 typedef struct		s_map
 {
 	int				ants;
-	t_lroom			start;
-	t_lroom			end;
-	t_lroom			map;
+	t_lroom			*start;
+	t_lroom			*end;
+	t_lroom			*map;
 	t_type			next;
 }					t_map;
 
 typedef void	(*t_func)(t_map *, char *);
 
 char	**ft_strtrimsplit(char *line, char c);
+int		full_digit(char *src);
+
 void	get_map(t_map *map);
 int		check_line(char *line);
 void	get(int token, t_map *map, char *line);
 char	*get_token(char **src);
+t_lroom	*get_room(t_lroom *room, char *src);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 15:15:36 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 13:24:19 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 15:12:39 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft.h"
 
 static int	count_space(char *src);
-static int	full_digit(char *src);
 
 int			check_line(char *line)
 {
@@ -54,7 +53,7 @@ static int	count_space(char *src)
 	return (much);
 }
 
-static int	full_digit(char *src)
+int			full_digit(char *src)
 {
 	while (*src)
 	{

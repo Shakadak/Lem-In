@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 17:32:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 13:14:19 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 15:27:33 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		main(void)
 {
 	t_map	map;
 
+	map.next = TANT;
 	get_map(&map);
+	diplay_map(&map);
 	return (0);
 }

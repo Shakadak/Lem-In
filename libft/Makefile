@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2014/02/15 13:37:41 by npineau          ###   ########.fr        #
+#    Updated: 2014/02/15 15:21:28 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ SRC = ft_strlen.c \
 	  ft_lstadd.c \
 	  ft_lstiter.c \
 	  ft_lstmap.c \
-	  ft_isspace.c
+	  ft_isspace.c \
+	  get_next_line.c
 PSRC = $(addprefix $(SRCDIR)/, $(SRC))
 
 OBJDIR = objects
