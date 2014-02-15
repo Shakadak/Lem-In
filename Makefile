@@ -6,7 +6,7 @@
 #    By: jibanez <jibanez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/31 16:16:53 by jibanez           #+#    #+#              #
-#    Updated: 2014/02/15 15:01:49 by npineau          ###   ########.fr        #
+#    Updated: 2014/02/15 16:37:21 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ TOK = lem_ant.c \
 	  lem_room.c \
 	  lem_start.c
 SRC = check_line.c get.c get_map.c get_room.c get_token.c \
-	  main.c
+	  main.c display_map.c
 OBJ = $(SRC:.c=.o) \
 	  $(TOK:.c=.o)
 PSRC = $(addprefix $(SRCDIR)/, $(SRC)) \

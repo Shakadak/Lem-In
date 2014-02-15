@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/06 16:16:06 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/05 12:54:12 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 17:32:26 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ static int	ft_cp_buff(char **line, char *buff)
 
 static int	ft_init_line(char **line)
 {
-	*line = (char *) malloc(sizeof(char) * 1);
+//	*line = (char *)malloc(sizeof(char) * 1);
+	*line = ft_strnew(0);
 	if (!*line)
 		return (-1);
 	return (0);

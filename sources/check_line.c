@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 15:15:36 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 15:12:39 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 18:06:44 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			full_digit(char *src)
 {
 	while (*src)
 	{
-		if (!ft_isdigit((int)*src))
+		if (!ft_isdigit(*src))
 			return (0);
 		src++;
 	}

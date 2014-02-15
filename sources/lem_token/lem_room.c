@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 14:29:41 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 15:19:28 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 18:32:45 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,15 @@ static void		change_type(t_map *map, t_lroom *current)
 
 static void		free_tab(char ***tab)
 {
-	free(*tab[0]);
-	free(*tab[1]);
-	free(*tab[2]);
-	free(*tab);
-	*tab = NULL;
+	if (*tab)
+	{
+		if (**tab)
+		{
+			free((*tab)[0]);
+			free((*tab)[1]);
+			free((*tab)[2]);
+		}
+		free(*tab);
+		*tab = NULL;
+	}
 }

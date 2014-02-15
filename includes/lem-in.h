@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 16:54:50 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 15:12:50 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 16:00:27 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ int		check_line(char *line);
 void	get(int token, t_map *map, char *line);
 char	*get_token(char **src);
 t_lroom	*get_room(t_lroom *room, char *src);
+void	display_map(t_map *map);
 
 #endif

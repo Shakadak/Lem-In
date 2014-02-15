@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 15:57:09 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 14:57:28 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/15 18:33:53 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char			**ft_strtrimsplit(char *line, char c)
 {
 	char		**tmp;
 	char		*tmp2;
+
 	tmp2 = ft_strtrim(line);
 	tmp = ft_strsplit(tmp2, c);
 	free(tmp2);
