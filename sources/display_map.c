@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 16:01:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 18:44:37 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/17 17:05:51 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void		display_map(t_map *map)
 	{
 		if (map->ants)
 		{
-			ft_putchar('\n');
 			ft_putnbr(map->ants);
 			ft_putchar('\n');
 			if (map->map)
@@ -56,7 +55,7 @@ static void	travel_link(t_lpipe *current, char *src)
 {
 	if (src && current)
 	{
-		if (current->name)
+		if (current->name && !(current->duplicate))
 		{
 			ft_putstr(src);
 			ft_putchar('-');

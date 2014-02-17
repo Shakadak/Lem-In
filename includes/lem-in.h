@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 16:54:50 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 16:00:27 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/17 16:54:14 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef enum		e_type
 
 typedef struct		s_lpipe
 {
+	int				duplicate;
 	struct s_lroom	*name;
 	struct s_lpipe	*next;
 }					t_lpipe;
