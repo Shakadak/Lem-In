@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 16:01:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/17 17:05:51 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/17 17:33:23 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static void	travel_link(t_lpipe *current, char *src);
 static void	travel_room(t_lroom *current, int n);
+static void	display_command(t_lroom *current);
 
 void		display_map(t_map *map)
 {
@@ -41,6 +42,7 @@ static void	travel_room(t_lroom *current, int n)
 		travel_link(current->link, current->name);
 	else
 	{
+		display_command(current);
 		ft_putstr(current->name);
 		ft_putchar(' ');
 		ft_putnbr(current->coo.x);
@@ -63,4 +65,12 @@ static void	travel_link(t_lpipe *current, char *src)
 		}
 		travel_link(current->next, src);
 	}
+}
+
+static void	display_command(t_lroom *current)
+{
+	if (current->type == TSTART)
+		ft_putendl("##start");
+	else if (current->type == TEND)
+		ft_putendl("##end");
 }

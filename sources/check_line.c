@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 15:15:36 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 18:06:44 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/17 17:32:48 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int			check_line(char *line)
 {
 	if (*line == '\0')
 		return (0);
-	if (line[1] == '#')
+	if (line[0] == '#')
 	{
-		if (line[2] == '#')
+		if (line[1] == '#')
 		{
-			if (ft_strequ(&line[3], "start"))
+			if (ft_strequ(&line[2], "start"))
 					return (START);
-			if (ft_strequ(&line[3], "end"))
+			if (ft_strequ(&line[2], "end"))
 					return (END);
 		}
 		return (COMMENT);

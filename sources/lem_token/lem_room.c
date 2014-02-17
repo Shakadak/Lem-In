@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 14:29:41 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 18:32:45 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/17 17:26:45 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	lem_room(t_map *map, char *line)
 	char	**tmp;
 	t_lroom	*current;
 
-	if (map->next == TLINK)
+	if (map->next == TLINK || map->next == TANT)
 		map->next = TSTOP;
 	else
 	{
@@ -39,9 +39,9 @@ void	lem_room(t_map *map, char *line)
 			}
 			else
 				new_coo(tmp, current);
-			map->next = TBASIC;
 			if (map->next == TSTART || map->next == TEND)
 				change_type(map, current);
+			map->next = TBASIC;
 		}
 		else
 			lem_error(map, tmp[0]);
