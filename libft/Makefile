@@ -6,8 +6,8 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2014/02/15 19:29:06 by npineau          ###   ########.fr        #
-#                                                                              #
+#    Updated: 2014/02/17 16:42:48 by npineau          ###   ########.fr        #
+#frp                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
@@ -95,8 +95,8 @@ $(OBJDIR):
 	@mkdir $(OBJDIR)
 
 $(NAME): $(POBJ)
-	@echo ""
-	@ar -q $@ $^
+	@ar -crus $@ $^
+	@echo "."
 
 $(POBJ): |$(OBJDIR)
 
