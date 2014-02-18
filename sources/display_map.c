@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 16:01:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/17 17:33:23 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/18 15:23:25 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	travel_room(t_lroom *current, int n)
 {
 	if (!current)
 		return ;
+	travel_room(current->next, n);
 	if (n)
 		travel_link(current->link, current->name);
 	else
@@ -50,7 +51,6 @@ static void	travel_room(t_lroom *current, int n)
 		ft_putnbr(current->coo.y);
 		ft_putchar('\n');
 	}
-	travel_room(current->next, n);
 }
 
 static void	travel_link(t_lpipe *current, char *src)
