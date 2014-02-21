@@ -17,3 +17,6 @@
 *.out
 *.app
 lem-in
+
+# Other
+*.map

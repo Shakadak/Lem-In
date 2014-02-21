@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   put_weight.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/10 17:32:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/21 17:25:53 by npineau          ###   ########.fr       */
+/*   Created: 2014/02/21 16:02:44 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/21 17:22:18 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "lem-in.h"
 
-int		main(void)
+void	put_weight(t_lroom *current, int	weight)
 {
-	t_map	*map;
+	t_lpipe		*tmp;
 
-	map = (t_map *)malloc(sizeof(t_map));
-	map->ants = 0;
-	map->start = NULL;
-	map->end = NULL;
-	map->map = NULL;
-	map->next = TANT;
-	get_map(map);
-	display_map(map);
-	put_weight(map->end, 0);
-	return (0);
+	if (!current)
+		return ;
+	if (current->weight != 0 && current->weight < weight)
+		return ;
+	tmp = current->link;
+	current->weight = weight;
+	while (tmp)
+	{
+		put_weight(tmp->name, weight + 1);
+		tmp = tmp->next;
+	}
 }
