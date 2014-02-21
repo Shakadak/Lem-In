@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/21 16:02:44 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/21 18:06:46 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/21 18:20:46 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	put_weight(t_lroom *current, int	weight)
 		if (current->weight > weight)
 			current->weight = weight;
 	}
+	if (current->type == TSTART)
+		return ;
 	tmp = current->link;
 	while (tmp)
 	{
