@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 16:01:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/18 15:23:25 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/21 17:38:23 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	travel_room(t_lroom *current, int n)
 		ft_putnbr(current->coo.x);
 		ft_putchar(' ');
 		ft_putnbr(current->coo.y);
+		ft_putstr(" weight: ");
+		ft_putnbr(current->weight);
 		ft_putchar('\n');
 	}
 }

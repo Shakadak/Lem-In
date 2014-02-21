@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 17:32:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/21 17:25:53 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/21 18:05:06 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		main(void)
 	map->map = NULL;
 	map->next = TANT;
 	get_map(map);
-	display_map(map);
 	put_weight(map->end, 0);
+	display_map(map);
 	return (0);
 }

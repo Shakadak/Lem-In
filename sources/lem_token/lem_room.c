@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 14:29:41 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/17 17:26:45 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/21 18:05:36 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static t_lroom	*new_room(char **src, t_lroom *current)
 	new->next = current;
 	new->name = ft_strdup(src[0]);
 	new->type = TBASIC;
+	new->weight = -1;
 	new_coo(src, new);
 	new->link = NULL;
 	return (new);
