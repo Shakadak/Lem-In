@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 16:54:50 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/21 17:33:57 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/22 16:13:44 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ char	*get_token(char **src);
 t_lroom	*get_room(t_lroom *room, char *src);
 void	display_map(t_map *map);
 void	put_weight(t_lroom *current, int weight);
+void	display_ants(t_map *map);
 
 #endif

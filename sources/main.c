@@ -6,12 +6,13 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 17:32:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/21 18:05:06 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/22 16:14:21 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "lem-in.h"
+#include "libft.h"
 
 int		main(void)
 {
@@ -25,6 +26,12 @@ int		main(void)
 	map->next = TANT;
 	get_map(map);
 	put_weight(map->end, 0);
+	if (!map->start || map->start->weight == -1)
+	{
+		ft_putendl("ERROR");
+		return (-1);
+	}
 	display_map(map);
+	display_ants(map);
 	return (0);
 }
