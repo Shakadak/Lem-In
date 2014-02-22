@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 17:32:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/22 16:14:21 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/22 16:49:56 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		main(void)
 		return (-1);
 	}
 	display_map(map);
+	ft_putchar('\n');
 	display_ants(map);
 	return (0);
 }
