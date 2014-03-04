@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/15 19:01:32 by npineau           #+#    #+#              #
-#    Updated: 2014/02/22 16:12:14 by npineau          ###   ########.fr        #
+#    Updated: 2014/02/26 16:57:03 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,10 @@ RM = rm -rf
 
 all: $(LIBDIR)/$(LIB) $(NAME)
 
+#
+#MISC
+#
+
 $(OBJDIR):
 	@mkdir $(OBJDIR)
 	@echo "$(INFO_COLOR)Created $(OBJDIR) directory$(STOP_COLOR)"
@@ -69,9 +73,17 @@ $(OBJDIR):
 $(LIBDIR)/$(LIB):
 	@$(MAKE) -C $(LIBDIR)
 
+#
+#EXECUTABLE
+#
+
 $(NAME): $(POBJ)
 	@$(CC) -o $@ $^ -L$(LIBDIR) -lft
 	@echo "$(OK_COLOR)$(NAME) --> [Done!]$(STOP_COLOR)"
+
+#
+#OBJECTS
+#
 
 $(POBJ): |$(OBJDIR)
 
@@ -82,6 +94,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 $(OBJDIR)/%.o: $(SRCDIR)/$(TOKDIR)/%.c
 	@$(CC) $(CFLAGS) -I $(INCDIR) -o $@ -c $<
 	@echo "Compile $< to $@ $(OK)"
+
+#
+#CLEANING
+#
 
 clean:
 	@$(MAKE) -C $(LIBDIR) $@

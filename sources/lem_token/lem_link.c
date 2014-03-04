@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 15:57:09 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/17 17:03:52 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/22 17:38:48 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void			lem_link(t_map *map, char *line)
 		tmp = ft_strtrimsplit(line, '-');
 		if ((first = get_room(map->map, tmp[0])) == NULL)
 		{
-			map->next = TSTOP;
+			map->next = TLINK;
 			return ;
 		}
 		if ((second = get_room(map->map, tmp[1])) == NULL)
 		{
-			map->next = TSTOP;
+			map->next = TLINK;
 			return ;
 		}
 		place_link(first, second);

@@ -6,13 +6,13 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/21 16:02:44 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/22 14:10:17 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/22 17:47:24 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-void	put_weight(t_lroom *current, int	weight)
+void	put_weight(t_lroom *current, int weight)
 {
 	t_lpipe		*tmp;
 

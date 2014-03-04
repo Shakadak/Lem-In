@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 14:29:41 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/21 18:05:36 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/22 17:36:48 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void		free_tab(char ***tab);
 static t_lroom	*new_room(char **src, t_lroom *current);
 static void		new_coo(char **src, t_lroom *current);
 
-void	lem_room(t_map *map, char *line)
+void			lem_room(t_map *map, char *line)
 {
-	char	**tmp;
-	t_lroom	*current;
+	char		**tmp;
+	t_lroom		*current;
 
 	if (map->next == TLINK || map->next == TANT)
 		map->next = TSTOP;
