@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 11:00:59 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/15 13:36:35 by npineau          ###   ########.fr       */
+/*   Updated: 2014/03/18 13:12:40 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 # include <string.h>
 
-# define BUFF_SIZE 4096
+# define BUFF_SIZE 32
 
 typedef struct		s_list
 {
@@ -22,8 +22,6 @@ typedef struct		s_list
 	 size_t			content_size;
 	 struct s_list	*next;
 }					t_list;
-
-int		get_next_line(int const fd, char **line);
 
 int		ft_atoi(const char *src);
 char	*ft_itoa(int n);
@@ -72,6 +70,7 @@ char	*ft_strsub(const char *src, unsigned int start, size_t n);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *src);
 char	**ft_strsplit(char const *s, char c);
+int		get_next_line(int fd, char **src);
 
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);

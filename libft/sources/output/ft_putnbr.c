@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/21 11:42:56 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/05 12:04:54 by npineau          ###   ########.fr       */
+/*   Created: 2013/11/29 16:05:37 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/05 12:04:09 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-char	*ft_strchr(const char *src, int c)
+void	ft_putnbr(int n)
 {
-	int	i;
-	int	l;
-
-	i = 0;
-	l = ft_strlen(src);
-	if (c == 0)
-		return ((char *)&src[l]);
-	while (i < l)
+	if (n == -2147483648)
 	{
-		if (src[i] == c)
-			return ((char *)&src[i]);
-		i++;
+		write(1, "-2147483648", 11);
+		return ;
 	}
-	return (NULL);
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n *= -1;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
+	else
+		ft_putchar(n + '0');
 }

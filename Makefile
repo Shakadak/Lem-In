@@ -5,111 +5,101 @@
 #                                                     +:+ +:+         +:+      #
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/02/15 19:01:32 by npineau           #+#    #+#              #
-#    Updated: 2014/02/26 16:57:03 by npineau          ###   ########.fr        #
+#    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
+#    Updated: 2014/03/18 13:05:06 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = lem-in
+NAME		:=	lem-in
 
-SRCDIR = sources
-TOKDIR = lem_token
-OBJDIR = objects
-INCDIR = includes
-LIBDIR = libft
-LIB = libft.a
+### DIRECTORIES ###
 
-OK_COLOR = \033[32;01m
-ERROR_COLOR = \033[31;01m
-INFO_COLOR = \033[33;01m
-STOP_COLOR = \033[0m
-OK = $(OK_COLOR)--> [OK]$(STOP_COLOR)
+DIRSRC		:=	sources
+DIROBJ		:=	objects
+DIRTOK		:=	$(DIRSRC)/lem_token
+DIRBASE		:=	$(DIRSRC)/base
+DIRLIB		:=	libft
+DIRINC		:=	includes
 
-LINUX = no
-CFLAGS = -Wall -Wextra -Werror
-ifeq ($(DEBUG), yes)
-	CC = clang
-	CFLAGS += -ggdb3 -fstack-protector-all -Wshadow -Wunreachable-code \
-		-Wstack-protector -pedantic-errors -O0 -W -Wundef -fno-common \
-		-Wfatal-errors -Wstrict-prototypes -Wmissing-prototypes -pedantic \
-		-Wwrite-strings -Wunknown-pragmas -Wdeclaration-after-statement \
-		-Wold-style-definition -Wmissing-field-initializers -Wfloat-equal \
-		-Wpointer-arith -Wnested-externs -Wstrict-overflow=5 -fno-common \
-		-Wno-missing-field-initializers -Wswitch-default -Wswitch-enum \
-		-Wbad-function-cast -Wredundant-decls -fno-omit-frame-pointer
-else
-	CC = gcc
-	CFLAGS += -O3
-endif
+### FILES ###
 
-TOK = lem_ant.c \
-	  lem_comment.c \
-	  lem_end.c \
-	  lem_error.c \
-	  lem_link.c \
-	  lem_room.c \
-	  lem_start.c
-SRC = check_line.c get.c get_map.c get_room.c get_token.c \
-	  main.c display_map.c put_weight.c display_ants.c
-OBJ = $(SRC:.c=.o) \
-	  $(TOK:.c=.o)
-PSRC = $(addprefix $(SRCDIR)/, $(SRC)) \
-	  $(addprefix $(SRCDIR)/, $(addprefix $(TOKDIR)/, $(TOK)))
-POBJ = $(addprefix $(OBJDIR)/, $(OBJ))
+### FILES: SOURCES ###
 
-RM = rm -rf
+TOK		:=	lem_start.c \
+			lem_room.c \
+			lem_link.c \
+			lem_error.c \
+			lem_end.c \
+			lem_comment.c \
+			lem_ant.c
 
 
-all: $(LIBDIR)/$(LIB) $(NAME)
 
-#
-#MISC
-#
+BASE	:=	put_weight.c \
+			main.c \
+			get_token.c \
+			get_room.c \
+			get_map.c \
+			get.c \
+			display_map.c \
+			display_ants.c \
+			check_line.c
 
-$(OBJDIR):
-	@mkdir $(OBJDIR)
-	@echo "$(INFO_COLOR)Created $(OBJDIR) directory$(STOP_COLOR)"
+### FILES: OBJECTS ###
 
-$(LIBDIR)/$(LIB):
-	@$(MAKE) -C $(LIBDIR)
+OBJ			:=	$(BASE:.c=.o) \
+				$(TOK:.c=.o)
 
-#
-#EXECUTABLE
-#
+### FILES: PATHS ###
 
-$(NAME): $(POBJ)
-	@$(CC) -o $@ $^ -L$(LIBDIR) -lft
-	@echo "$(OK_COLOR)$(NAME) --> [Done!]$(STOP_COLOR)"
+POBJ		:=	$(addprefix $(DIROBJ)/, $(OBJ))
+INC			:=	$(DIRLIB)/$(DIRINC)/libft.h \
+				$(DIRINC)/parse.h \
+				$(DIRINC)/lem-in.h
+PLIB		:=	$(DIRLIB)/libft.a
 
-#
-#OBJECTS
-#
+### COMPILATION ###
 
-$(POBJ): |$(OBJDIR)
+CC			:=	gcc
+C_FLAG		:=	-Wall -Wextra -Werror
+O_FLAG		:=	-O3
+C_OPT		=	-o $@ -c $< -I $(DIRINC) -I $(DIRLIB)/$(DIRINC)
+L_FLAG		=	-L $(DIRLIB) -lft
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@$(CC) $(CFLAGS) -I $(INCDIR) -o $@ -c $<
-	@echo "Compile $< to $@ $(OK)"
+COMPIL		=	$(CC) $(C_FLAG) $(O_FLAG) $(C_OPT)
+LINK		=	$(CC) -o $(NAME) $^ $(L_FLAG)
 
-$(OBJDIR)/%.o: $(SRCDIR)/$(TOKDIR)/%.c
-	@$(CC) $(CFLAGS) -I $(INCDIR) -o $@ -c $<
-	@echo "Compile $< to $@ $(OK)"
+### RULES ###
 
-#
-#CLEANING
-#
+all: $(NAME)
+
+$(NAME): $(PLIB) $(POBJ)
+	$(LINK)
+
+$(PLIB):
+	make -C $(DIRLIB)
+
+### RULES: COMPILATION ###
+
+$(DIROBJ)/%.o: $(DIRBASE)/%.c $(INC)
+	$(COMPIL)
+
+$(DIROBJ)/%.o: $(DIRTOK)/%.c $(INC)
+	$(COMPIL)
+
+### RULES: MISC ###
+
+$(POBJ): |$(DIROBJ)
+
+$(DIROBJ):
+	mkdir $(DIROBJ)
 
 clean:
-	@$(MAKE) -C $(LIBDIR) $@
-	@$(RM) $(OBJDIR)
-	@echo "$(INFO_COLOR)Removed $(OBJ)$(STOP_COLOR)"
+	@(rm -f $(POBJ))
 
 fclean: clean
-	@$(MAKE) -C $(LIBDIR) $@
-	@$(RM) $(NAME)
-	@echo "$(INFO_COLOR)Removed $(NAME)$(STOP_COLOR)"
-	@echo "$(OK_COLOR)--> [Clean!]$(STOP_COLOR)"
+	@(rm -f $(NAME))
 
-re: fclean all
+re: fclean $(NAME)
 
 .PHONY: all clean re fclean
