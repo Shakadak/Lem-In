@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/22 14:12:45 by npineau           #+#    #+#             */
-/*   Updated: 2014/08/04 13:01:48 by npineau          ###   ########.fr       */
+/*   Updated: 2014/02/22 16:45:19 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ static void		get_path(t_lroom *room, t_lpipe *begin);
 void			display_ants(t_map *map)
 {
 	t_lpipe		*road;
+	t_lroom		*tmp;
 	int			ant;
 
 	road = new_elem(map->start);
 	get_path(map->start, road);
+	tmp = map->start;
 	ant = 1;
 	while (ant <= map->ants + map->start->weight)
 	{

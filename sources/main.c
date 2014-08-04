@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/28 14:28:03 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/05 12:08:37 by npineau          ###   ########.fr       */
+/*   Created: 2014/02/10 17:32:03 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/22 16:49:56 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "lem-in.h"
 #include "libft.h"
 
-char	*ft_strsub(const char *src, unsigned int start, size_t n)
+int		main(void)
 {
-	char	*new;
+	t_map	*map;
 
-	new = ft_strnew(n + 1);
-	if (!src || !new)
-		return (NULL);
-	new = ft_strncpy(new, &src[start], n);
-	return (new);
+	map = (t_map *)malloc(sizeof(t_map));
+	map->ants = 0;
+	map->start = NULL;
+	map->end = NULL;
+	map->map = NULL;
+	map->next = TANT;
+	get_map(map);
+	put_weight(map->end, 0);
+	if (!map->start || map->start->weight == -1)
+	{
+		ft_putendl("ERROR");
+		return (-1);
+	}
+	display_map(map);
+	ft_putchar('\n');
+	display_ants(map);
+	return (0);
 }

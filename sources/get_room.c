@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   get_room.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 15:09:44 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/05 12:07:20 by npineau          ###   ########.fr       */
+/*   Created: 2014/02/15 14:29:32 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/15 15:03:27 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "lem-in.h"
+#include "libft.h"
 
-char	*ft_strncpy(char *copy, const char *src, size_t n)
+t_lroom	*get_room(t_lroom *room, char *src)
 {
-	size_t	index;
-
-	index = 0;
-	while (index < n && src[index] != 0)
-	{
-		copy[index] = src[index];
-		index++;
-	}
-	while (index < n)
-	{
-		copy[index] = 0;
-		index++;
-	}
-	return (copy);
+	if (room == NULL)
+		return (NULL);
+	if (ft_strequ(room->name, src))
+		return (room);
+	return (get_room(room->next, src));
 }

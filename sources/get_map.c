@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 15:46:02 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/05 12:06:55 by npineau          ###   ########.fr       */
+/*   Created: 2014/02/11 17:12:18 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/17 17:23:25 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
+#include "lem-in.h"
 
-char	*ft_strncat(char *dest, const char *src, size_t n)
+void	get_map(t_map *map)
 {
-	size_t	index;
-	size_t	length;
+	char	*line;
 
-	length = ft_strlen(dest);
-	index = 0;
-	while (index < n && src[index] != 0)
+	while (get_next_line(0, &line) > 0)
 	{
-		dest[index + length] = src[index];
-		index++;
+		get(check_line(line), map, line);
+		free(line);
+		line = NULL;
+		if (map->next == TSTOP)
+			break ;
 	}
-	dest[index + length] = 0;
-	return (dest);
 }

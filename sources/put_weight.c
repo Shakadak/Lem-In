@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   put_weight.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/21 15:54:06 by npineau           #+#    #+#             */
-/*   Updated: 2014/02/05 11:59:19 by npineau          ###   ########.fr       */
+/*   Created: 2014/02/21 16:02:44 by npineau           #+#    #+#             */
+/*   Updated: 2014/02/22 17:47:24 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isupper(int c);
-static int	ft_islower(int c);
+#include "lem-in.h"
 
-int			ft_isalpha(int c)
+void	put_weight(t_lroom *current, int weight)
 {
-	return (ft_isupper(c) + ft_islower(c));
-}
+	t_lpipe		*tmp;
 
-static int	ft_isupper(int c)
-{
-	if ('A' <= c && c <= 'Z')
-		return (1);
+	if (!current)
+		return ;
+	if (current->weight == -1)
+		current->weight = weight;
 	else
-		return (0);
-}
-
-static int	ft_islower(int c)
-{
-	if ('a' <= c && c <= 'z')
-		return (1);
-	else
-		return (0);
+	{
+		if (current->weight < weight)
+			return ;
+		if (current->weight > weight)
+			current->weight = weight;
+	}
+	if (current->type == TSTART)
+		return ;
+	tmp = current->link;
+	while (tmp)
+	{
+		put_weight(tmp->name, weight + 1);
+		tmp = tmp->next;
+	}
 }
