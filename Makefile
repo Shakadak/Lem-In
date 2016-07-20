@@ -14,41 +14,19 @@ NAME		:=	lem-in
 
 ### DIRECTORIES ###
 
-DIRSRC		:=	sources
-DIROBJ		:=	objects
+DIRSRC		:=	src
+DIROBJ		:=	obj
 DIRTOK		:=	$(DIRSRC)/lem_token
 DIRBASE		:=	$(DIRSRC)/base
 DIRLIB		:=	libft
-DIRINC		:=	includes
+DIRINC		:=	inc
 
 ### FILES ###
 
 ### FILES: SOURCES ###
 
-TOK		:=	lem_start.c \
-			lem_room.c \
-			lem_link.c \
-			lem_error.c \
-			lem_end.c \
-			lem_comment.c \
-			lem_ant.c
-
-
-
-BASE	:=	put_weight.c \
-			main.c \
-			get_token.c \
-			get_room.c \
-			get_map.c \
-			get.c \
-			display_map.c \
-			display_ants.c \
-			check_line.c
-
-### FILES: OBJECTS ###
-
-OBJ			:=	$(BASE:.c=.o) \
-				$(TOK:.c=.o)
+include $(DIRTOK)/src.mk
+include $(DIRBASE)/src.mk
 
 ### FILES: PATHS ###
 
@@ -60,10 +38,10 @@ PLIB		:=	$(DIRLIB)/libft.a
 
 ### COMPILATION ###
 
-CC			:=	gcc
+CC			:=	clang
 C_FLAG		:=	-Wall -Wextra -Werror
 O_FLAG		:=	-O3
-C_OPT		=	-o $@ -c $< -I $(DIRINC) -I $(DIRLIB)/$(DIRINC)
+C_OPT		=	-o $@ -c $< -I $(DIRINC) -I $(DIRLIB)/$(DIRINC) -I .
 L_FLAG		=	-L $(DIRLIB) -lft
 
 COMPIL		=	$(CC) $(C_FLAG) $(O_FLAG) $(C_OPT)
@@ -78,14 +56,6 @@ $(NAME): $(PLIB) $(POBJ)
 
 $(PLIB):
 	make -C $(DIRLIB)
-
-### RULES: COMPILATION ###
-
-$(DIROBJ)/%.o: $(DIRBASE)/%.c $(INC)
-	$(COMPIL)
-
-$(DIROBJ)/%.o: $(DIRTOK)/%.c $(INC)
-	$(COMPIL)
 
 ### RULES: MISC ###
 
