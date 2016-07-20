@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "lem-in.h"
-#include "libft.h"
-#include "parse.h"
+#include "inc/lem-in.h"
+#include "libft/inc/libft.h"
+#include "inc/parse.h"
 
 static void		change_type(t_map *map, t_lroom *current);
 static void		free_tab(char ***tab);

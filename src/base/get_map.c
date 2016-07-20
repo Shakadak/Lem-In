@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
-#include "lem-in.h"
+#include "libft/inc/libft.h"
+#include "inc/lem-in.h"
 
 void	get_map(t_map *map)
 {
@@ -20,6 +20,7 @@ void	get_map(t_map *map)
 
 	while (get_next_line(0, &line) > 0)
 	{
+//		ft_putendl(line);
 		get(check_line(line), map, line);
 		free(line);
 		line = NULL;

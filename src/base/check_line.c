@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
-#include "libft.h"
+#include "inc/lem-in.h"
+#include "libft/inc/libft.h"
 
 static int	count_space(char *src);
 

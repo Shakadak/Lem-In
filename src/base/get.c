@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
-#include "parse.h"
-
-static void	exe_func(t_func call, t_map *map, char *line);
+#include "inc/lem-in.h"
+#include "inc/parse.h"
 
 void		get(int token, t_map *map, char *line)
 {
-	static t_func	func[]=
-	{
+	static t_func	func[] = {
 		&lem_error,
 		&lem_start,
 		&lem_end,
@@ -28,10 +25,5 @@ void		get(int token, t_map *map, char *line)
 		&lem_room
 	};
 
-	exe_func(func[token], map, line);
-}
-
-static void	exe_func(t_func call, t_map *map, char *line)
-{
-	call(map, line);
+	func[token](map, line);
 }

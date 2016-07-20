@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "inc/lem-in.h"
 
 void	lem_comment(t_map *map, char *line)
 {

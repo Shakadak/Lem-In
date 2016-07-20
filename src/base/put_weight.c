@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "inc/lem-in.h"
 
 void	put_weight(t_lroom *current, int weight)
 {
