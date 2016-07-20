@@ -72,4 +72,7 @@ fclean: clean
 
 re: fclean $(NAME)
 
+run: all
+	./lem-in < base.map
+
 .PHONY: all clean re fclean
