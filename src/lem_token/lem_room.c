@@ -30,7 +30,7 @@ void			lem_room(t_map *map, char *line)
 	else
 	{
 		tmp = ft_strtrimsplit(line, ' ');
-		if (full_digit(tmp[1]) && full_digit(tmp[2]))
+		if (ft_isx(tmp[1], ft_isdigit) && ft_isx(tmp[2], ft_isdigit))
 		{
 			if ((current = get_room(map->map, tmp[0])) == NULL)
 			{
