@@ -4,7 +4,6 @@ BASE	:=	put_weight.c \
 			get_room.c \
 			get_map.c \
 			get.c \
-			display_map.c \
 			display_ants.c \
 			check_line.c
 

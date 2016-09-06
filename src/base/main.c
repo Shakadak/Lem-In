@@ -31,7 +31,6 @@ int		main(void)
 		ft_putendl("ERROR");
 		return (-1);
 	}
-	display_map(map);
 	ft_putchar('\n');
 	display_ants(map);
 	return (0);

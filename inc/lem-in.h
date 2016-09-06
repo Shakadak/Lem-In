@@ -76,7 +76,6 @@ int		check_line(char *line);
 void	get(int token, t_map *map, char *line);
 char	*get_token(char **src);
 t_lroom	*get_room(t_lroom *room, char *src);
-void	display_map(t_map *map);
 void	put_weight(t_lroom *current, int weight);
 void	display_ants(t_map *map);
 
