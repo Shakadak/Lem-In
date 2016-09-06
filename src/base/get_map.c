@@ -17,11 +17,15 @@
 void	get_map(t_map *map)
 {
 	char	*line;
+	char	*tline;
 
 	while (get_next_line(0, &line) > 0)
 	{
-//		ft_putendl(line);
-		get(check_line(line), map, line);
+		tline = ft_strtrim(line);
+		ft_putendl(tline);
+		get(check_line(tline), map, tline);
+		free(tline);
+		tline = NULL;
 		free(line);
 		line = NULL;
 		if (map->next == TSTOP)

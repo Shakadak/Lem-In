@@ -13,7 +13,19 @@
 #include "inc/lem-in.h"
 #include "libft/inc/libft.h"
 
-static int	count_space(char *src);
+static int	count_space(char *src)
+{
+	int	much;
+
+	much = 0;
+	while (*src)
+	{
+		if (ft_isspace(*src))
+			much++;
+		src++;
+	}
+	return (much);
+}
 
 int			check_line(char *line)
 {
@@ -32,34 +44,9 @@ int			check_line(char *line)
 	}
 	if (ft_strchr(line, '-'))
 		return (LINK);
-	if (full_digit(ft_strtrim(line)))
+	if (ft_isx(line, ft_isdigit))
 		return (ANT);
-	if (count_space(ft_strtrim(line)) == 2)
+	if (count_space(line) == 2)
 		return (ROOM);
 	return (ERROR);
-}
-
-static int	count_space(char *src)
-{
-	int	much;
-
-	much = 0;
-	while (*src)
-	{
-		if (ft_isspace(*src))
-			much++;
-		src++;
-	}
-	return (much);
-}
-
-int			full_digit(char *src)
-{
-	while (*src)
-	{
-		if (!ft_isdigit(*src))
-			return (0);
-		src++;
-	}
-	return (1);
 }
