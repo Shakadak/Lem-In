@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/08 10:39:32 by npineau           #+#    #+#              #
-#    Updated: 2017/10/19 10:29:59 by npineau          ###   ########.fr        #
+#    Updated: 2017/10/19 11:50:13 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,5 +75,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-$(NAME): all
