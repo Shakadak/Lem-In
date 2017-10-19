@@ -6,38 +6,29 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/08 10:39:32 by npineau           #+#    #+#              #
-#    Updated: 2015/05/08 16:18:57 by npineau          ###   ########.fr        #
+#    Updated: 2017/10/19 10:29:59 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:=	irc
-CLIENT	:=	client
-SERVEUR	:=	serveur
+NAME	:=	lem-in
 
 ### DIRECTORIES ###
 
 DIRSRC	:=	src
-DIRSRV	:=	$(DIRSRC)/$(SERVEUR)
-DIRCLI	:=	$(DIRSRC)/$(CLIENT)
 DIROBJ	:=	obj
 DIRINC	:=	inc
 DIRLIB	:=	libft
 
 ### FILES ###
 
-include $(DIRCLI)/sources.mk
-include $(DIRSRV)/sources.mk
+include $(DIRSRC)/src.mk
 
-HEADCLI	:=	client.h
-HEADSRV	:=	server.h
 LIB		:=	libft.a
 
 ### PATHS ###
 
-POBJCLI		:=	$(addprefix $(DIROBJ)/, $(OBJCLI))
-POBJSRV		:=	$(addprefix $(DIROBJ)/, $(OBJSRV))
-PHEADSRV	:=	$(DIRINC)/$(HEADSRV)
-PHEADCLI	:=	$(DIRINC)/$(HEADCLI)
+POBJ		:=	$(addprefix $(DIROBJ)/, $(OBJ))
+PHEAD		:=	$(DIRINC)/lem-in.h
 PLIB		:=	$(DIRLIB)/$(LIB)
 
 ### COMPILATION VARIABLES ###
@@ -56,7 +47,7 @@ LINK	=	$(CC) -o $@ $^ $(L_FLAG)
 
 .PHONY: all clean fclean re
 
-all: $(SERVEUR) $(CLIENT)
+all: $(NAME)
 
 ### LIBFT ###
 
@@ -68,16 +59,11 @@ $(PLIB):
 $(DIROBJ):
 	mkdir $(DIROBJ)
 
-$(POBJSRV): |$(DIROBJ)
-
-$(POBJCLI): |$(DIROBJ)
+$(POBJ): |$(DIROBJ)
 
 ### EXECUTABLE ###
 
-$(CLIENT): $(PLIB) $(POBJCLI)
-	$(LINK)
-
-$(SERVEUR): $(PLIB) $(POBJSRV)
+$(NAME): $(PLIB) $(POBJ)
 	$(LINK)
 
 ### CLEAN UP ###
@@ -86,7 +72,7 @@ clean:
 	rm -rf $(DIROBJ)
 
 fclean: clean
-	rm -f $(CLIENT) $(SERVEUR)
+	rm -f $(NAME)
 
 re: fclean all
 
