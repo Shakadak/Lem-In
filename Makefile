@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/08 10:39:32 by npineau           #+#    #+#              #
-#    Updated: 2017/10/19 11:50:13 by npineau          ###   ########.fr        #
+#    Updated: 2017/10/19 12:58:05 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ PLIB		:=	$(DIRLIB)/$(LIB)
 
 
 CC		:=	clang
-C_FLAG	:=	-Wall -Wextra -Werror
+C_FLAG	:=	-Wall -Wextra -Werror -pedantic
 O_FLAG	:=	-O3
 L_FLAG	:=	-L $(DIRLIB) -lft
 C_INC	:=	-I $(DIRINC) -I $(DIRLIB)/$(DIRINC) -I .
