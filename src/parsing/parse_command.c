@@ -6,12 +6,13 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 10:46:24 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/19 11:39:21 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/19 11:56:13 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft/inc/libft.h"
+#include "inc/structs.h"
 
 static int	is_hash(char c)
 {
