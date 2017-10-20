@@ -24,10 +24,8 @@ int		init_graph(t_room *rooms, int roomnbr, t_rb links)
 	t_link	l;
 
 	i = 0;
-	printf("before\n");
 	while (rb_pop_front(&links, &l))
 	{
-		printf("after pop, l.fst = %s\n", l.fst);
 		if (!ft_strcmp(l.fst, l.sec))
 			continue;
 		j = 0;
@@ -35,7 +33,6 @@ int		init_graph(t_room *rooms, int roomnbr, t_rb links)
 		r1 = NULL;
 		while (j < roomnbr)
 		{
-			printf("%i\n", j);
 			if (!ft_strcmp(rooms[j].name, l.fst)
 					|| !ft_strcmp(rooms[j].name, l.sec))
 			{

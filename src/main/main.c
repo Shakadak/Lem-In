@@ -43,10 +43,8 @@ int main()
 	rb_new(5, sizeof(t_link), &links);
 
 	link.fst = ft_strdup("0");
-	//printf("after pop, l.fst = %s\n", link.fst);
 	link.sec = ft_strdup("3");
 	rb_push_back(&links, &link);
-	//printf("after pop, l.fst = %s\n", ((t_link *)links.head)->fst);
 	link.fst = ft_strdup("0");
 	link.sec = ft_strdup("2");
 	rb_push_back(&links, &link);
@@ -61,7 +59,6 @@ int main()
 	rb_push_back(&links, &link);
 
 	//rb_pop_front(&links, &l);
-	//printf("after pop, l.fst = %s\n", l.fst);
 
 	rooms = test_create_rooms();
 	if (!init_graph(rooms, rnb, links))
