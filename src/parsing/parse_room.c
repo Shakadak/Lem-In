@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 10:34:29 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/21 18:13:27 by nathanael        ###   ########.fr       */
+/*   Updated: 2017/10/22 11:30:56 by nathanael        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,6 @@
 #include "libft/inc/libft.h"
 #include "inc/structs.h"
 #include "inc/parsing.h"
-
-static int	is_invalid_fst(char c)
-{
-	return (c == 'L' || c == '#' || ft_isspace(c));
-}
-
-static int	parse_lexed_name(t_string buff, t_string *leftover, t_string *name)
-{
-	t_pair	pair;
-
-	if (is_invalid_fst(buff[0]))
-	{
-		return (0);
-	}
-	pair = strbreak(ft_isspace, buff);
-	*name = pair.fst;
-	*leftover = pair.snd;
-	pair = strspan(ft_isspace, *leftover);
-	free(pair.fst);
-	*leftover = pair.snd;
-	return (1);
-}
 
 static int	parse_lexed_int(t_string in, t_string *out, int *integer)
 {
