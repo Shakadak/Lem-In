@@ -54,6 +54,6 @@ int		init_graph(t_room *rooms, int roomnbr, t_rb links)
 
 void	go_link(t_room *r1, t_room *r2)
 {
-	ft_lstadd(&r1->conn, ft_lstnew(&r2, sizeof(r2)));
-	ft_lstadd(&r2->conn, ft_lstnew(&r1, sizeof(r1)));
+	ft_lstadd(&r1->conn, ft_lstnew(r2, sizeof(r2)));
+	ft_lstadd(&r2->conn, ft_lstnew(r1, sizeof(r1)));
 }
