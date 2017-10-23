@@ -15,5 +15,6 @@
 
 int		init_graph(t_room *rooms, int roomnbr, t_rb links);
 void	go_link(t_room *r1, t_room *r2);
+void	print_graph(t_room *rooms, int rnb);
 
 #endif
