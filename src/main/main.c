@@ -63,4 +63,5 @@ int main()
 	rooms = test_create_rooms();
 	if (!init_graph(rooms, rnb, links))
 		return (-1); // it's an error
+	print_graph(rooms, rnb);
 }
