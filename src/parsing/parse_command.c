@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 10:46:24 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/19 11:56:13 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/23 10:14:27 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_hash(char c)
 	return (c == '#');
 }
 
-int	parse_command(char *line, t_room_type *type)
+int			parse_command(char *line, t_room_type *type)
 {
 	t_pair	pair;
 	int		check;

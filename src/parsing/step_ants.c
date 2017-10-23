@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ants.c                                       :+:      :+:    :+:   */
+/*   step_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 13:53:38 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/23 10:14:02 by npineau          ###   ########.fr       */
+/*   Created: 2017/10/23 11:03:42 by npineau           #+#    #+#             */
+/*   Updated: 2017/10/23 11:36:52 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft/inc/libft.h"
+#include "inc/parsing.h"
+#include "inc/structs.h"
 
-int	parse_ants(const char *line, size_t *ret)
+int	step_ants(int fd, size_t *ants)
 {
-	t_pair	pair;
-	int		check;
-	char	*leftover;
-	char	*ants_n;
+	t_string	buff;
+	int			check;
 
-	pair = strspan(ft_isdigit, line);
-	ants_n = fst(pair);
-	leftover = snd(pair);
-	check = !ft_strempty(ants_n) && ft_strempty(leftover);
-	if (check)
+	if ((check = (get_next_line(fd, &buff) > 0)))
 	{
-		*ret = ft_atoi(ants_n);
+		ft_putendl(buff);
+		if (parse_comment(buff))
+		{
+			free(buff);
+			check = (get_next_line(fd, &buff) > 0);
+			ft_putendl(buff);
+		}
+		if (check)
+		{
+			check = parse_ants(buff, ants);
+			free(buff);
+			if (!check)
+			{
+				ft_putendl("ERROR");
+			}
+		}
 	}
-	free(ants_n);
-	free(leftover);
 	return (check);
 }

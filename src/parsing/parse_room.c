@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 10:34:29 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/22 11:30:56 by nathanael        ###   ########.fr       */
+/*   Updated: 2017/10/23 10:17:58 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static int	parse_lexed_int(t_string in, t_string *out, int *integer)
 {
-	int 		check;
+	int			check;
 	t_string	tmp;
 
 	if ((check = parse_int(in, &tmp, integer)))
@@ -28,7 +28,7 @@ static int	parse_lexed_int(t_string in, t_string *out, int *integer)
 	return (check);
 }
 
-int	parse_room(char *line, t_room *room)
+int			parse_room(char *line, t_room *room)
 {
 	int			check;
 	t_string	tmp;
@@ -53,5 +53,5 @@ int	parse_room(char *line, t_room *room)
 		free(room->name);
 		room->name = NULL;
 	}
-	return check;
+	return (check);
 }

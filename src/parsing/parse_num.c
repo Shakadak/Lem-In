@@ -6,10 +6,9 @@
 /*   By: nathanael <npineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 12:46:52 by nathanael         #+#    #+#             */
-/*   Updated: 2017/10/21 15:06:02 by nathanael        ###   ########.fr       */
+/*   Updated: 2017/10/23 10:16:30 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <stdlib.h>
 #include "libft/inc/libft.h"
@@ -53,5 +52,5 @@ int	parse_int(t_string in, t_string *out, int *integer)
 	{
 		*integer = mod * nat;
 	}
-	return check;
+	return (check);
 }

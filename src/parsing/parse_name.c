@@ -6,7 +6,7 @@
 /*   By: nathanael <npineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 10:35:21 by nathanael         #+#    #+#             */
-/*   Updated: 2017/10/22 14:13:11 by nathanael        ###   ########.fr       */
+/*   Updated: 2017/10/23 10:17:02 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			parse_name(t_string in, t_string *out, t_string *name)
 		*name = pair.fst;
 		*out = pair.snd;
 	}
-	return check;
+	return (check);
 }
 
 int			parse_lexed_name(t_string buff, t_string *leftover, t_string *name)

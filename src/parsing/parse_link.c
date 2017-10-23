@@ -6,7 +6,7 @@
 /*   By: nathanael <npineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 10:21:26 by nathanael         #+#    #+#             */
-/*   Updated: 2017/10/22 14:10:30 by nathanael        ###   ########.fr       */
+/*   Updated: 2017/10/23 10:15:46 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	parse_char(char c, t_string in, t_string *out, char *c_out)
 		}
 		*out = ft_strdup(&in[1]);
 	}
-	return check;
+	return (check);
 }
 
 int	parse_link(t_string buff, t_link *link)
@@ -37,7 +37,7 @@ int	parse_link(t_string buff, t_link *link)
 
 	if ((check = parse_name(buff, &tmp, &link->fst)))
 	{
-		if ((check = (tmp[0] ==  '-')))
+		if ((check = (tmp[0] == '-')))
 		{
 			if ((check = parse_name(tmp + 1, &tmp2, &link->sec)))
 			{
@@ -55,5 +55,5 @@ int	parse_link(t_string buff, t_link *link)
 		else
 			ft_strdel(&link->fst);
 	}
-	return check;
+	return (check);
 }
