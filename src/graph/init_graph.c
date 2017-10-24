@@ -6,18 +6,18 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 15:37:24 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/10/19 13:31:28 by mde-jesu         ###   ########.fr       */
+/*   Updated: 2017/10/24 15:34:04 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "libft.h"
-#include "lem-in.h"
+#include "lemin.h"
 #include <stdio.h>
 
-void	init_graph(t_room *rooms, int roomnbr, t_rb links, unsigned int *error)
+void	init_graph(t_room *rooms, size_t roomnbr, t_rb links, unsigned int *error)
 {
-	int		cnt;
+	size_t	cnt;
 	int		ok;
 	t_room	*r1;
 	t_link	l;

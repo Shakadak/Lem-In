@@ -6,13 +6,13 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 12:23:39 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/10/19 13:31:10 by mde-jesu         ###   ########.fr       */
+/*   Updated: 2017/10/24 15:35:51 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
-#include "lem-in.h"
-#include "libft.h"
+#include "inc/structs.h"
+#include "inc/lemin.h"
+#include "libft/inc/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -32,11 +32,12 @@ t_room	*test_create_rooms()
 
 int main()
 {
-	t_room			*rooms;
-	int				rnb;
+	size_t	ants;
+	t_room	*rooms;
 	unsigned int	error;
-	t_rb			links;
-	t_link			link;
+	size_t	rnb;
+	t_rb	links;
+	t_link	link;
 	//t_room			*start;
 
 	//t_link	l;
@@ -71,4 +72,15 @@ int main()
 	//start = find_start_and_error(rooms, rnb, &error);
 	if (error != 0)
 		what_error(error);
+
+	printf("\n----------\n\n");
+	if (get_anthill(&ants, &rooms, &rnb, &links))
+	{
+		init_graph(rooms, rnb, links, &error);
+		if (error == 0)
+		{
+			print_graph(rooms, rnb);
+		}
+	}
+	return (0);
 }

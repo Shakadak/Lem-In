@@ -1,5 +1,5 @@
 #include "structs.h"
-#include "lem-in.h"
+#include "lemin.h"
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>

@@ -1,48 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_command.c                                    :+:      :+:    :+:   */
+/*   parse_spaces.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 10:46:24 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/23 10:14:27 by npineau          ###   ########.fr       */
+/*   Created: 2017/10/19 15:45:59 by npineau           #+#    #+#             */
+/*   Updated: 2017/10/19 15:54:16 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft/inc/libft.h"
-#include "inc/structs.h"
 
-static int	is_hash(char c)
-{
-	return (c == '#');
-}
-
-int			parse_command(char *line, t_room_type *type)
+int	spaces(char *buff, char **leftover)
 {
 	t_pair	pair;
-	int		check;
 
-	pair = strspan(is_hash, line);
-	check = !ft_strempty(pair.fst) && ft_strequ(pair.fst, "##")
-		&& !ft_strempty(pair.snd);
-	if (check)
-	{
-		if (ft_strequ(pair.snd, "start"))
-		{
-			*type = START;
-		}
-		else if (ft_strequ(pair.snd, "end"))
-		{
-			*type = END;
-		}
-		else
-		{
-			check = !check;
-		}
-	}
+	pair = strspan(ft_isspace, buff);
 	free(pair.fst);
-	free(pair.snd);
-	return (check);
+	*leftover = pair.snd;
+	return (1);
+}
+
+int	spaces1(char *buff, char **leftover)
+{
+	return (ft_isspace(buff[0]) ? spaces(buff, leftover) : 0);
 }
