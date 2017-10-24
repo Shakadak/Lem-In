@@ -1,7 +1,8 @@
 GRAPHPATH	:= $(DIRSRC)/graph
 
 GRAPH	:=\
-	init_graph.c
+	init_graph.c\
+	graph_utils.c
 
 OBJ	:=	$(OBJ) $(GRAPH:.c=.o)
 
