@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/08 10:39:32 by npineau           #+#    #+#              #
-#    Updated: 2017/10/24 11:52:31 by npineau          ###   ########.fr        #
+#    Updated: 2017/10/24 12:06:55 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,10 @@ LINK	=	$(CC) -o $@ $^ $(L_FLAG)
 all: $(PLIB) $(NAME)
 
 run: all
+	./lem-in < base_ants_letter.map
+	./lem-in < base_ants_nl.map
+	./lem-in < base_ants_noline.map
+	./lem-in < base_ants_num+letters.map
 	./lem-in < base.map
 
 ### LIBFT ###
