@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 10:19:10 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/23 15:31:06 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/24 11:55:33 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static int	step_rooms_go(int fd, t_rb *rooms, t_rb *links)
 {
 	t_string	last_buffer;
 
+	last_buffer = NULL;
 	while (step_rooms(fd, rooms, &last_buffer))
 		;
 	return (step_links_go(fd, links, last_buffer));
@@ -63,5 +64,11 @@ static int	step_ants_go(int fd, size_t *ants, t_rb *rooms, t_rb *links)
 
 int			parse_anthill(int fd, size_t *ants, t_rb *rooms, t_rb *links)
 {
-	return (step_ants_go(fd, ants, rooms, links));
+	int	check;
+	check = step_ants_go(fd, ants, rooms, links);
+	if (!check)
+	{
+		ft_putendl("ERROR");
+	}
+	return (check);
 }

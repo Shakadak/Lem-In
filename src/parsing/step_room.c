@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:22:27 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/23 13:37:58 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/24 11:56:52 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			step_rooms(int fd, t_rb *rooms, t_string *last_buffer)
 	t_room	room;
 	int		check;
 
+	ft_bzero(&room, sizeof(room));
 	if ((check = step_room(fd, &room, last_buffer)))
 	{
 		if (rb_full(*rooms))

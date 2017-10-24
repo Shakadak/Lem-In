@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:03:42 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/23 11:36:52 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/24 11:55:40 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ int	step_ants(int fd, size_t *ants)
 		{
 			check = parse_ants(buff, ants);
 			free(buff);
-			if (!check)
-			{
-				ft_putendl("ERROR");
-			}
 		}
 	}
 	return (check);

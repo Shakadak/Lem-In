@@ -6,7 +6,7 @@
 /*   By: nathanael <npineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 10:35:21 by nathanael         #+#    #+#             */
-/*   Updated: 2017/10/23 10:17:02 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/24 11:53:21 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ int			parse_name(t_string in, t_string *out, t_string *name)
 		return (0);
 	}
 	pair = strspan(is_valid_name_char, in);
-	if ((check = ft_strempty(pair.fst)))
-	{
-		free(pair.fst);
-		free(pair.snd);
-	}
-	else
+	if ((check = !ft_strempty(pair.fst)))
 	{
 		*name = pair.fst;
 		*out = pair.snd;
+	}
+	else
+	{
+		free(pair.fst);
+		free(pair.snd);
 	}
 	return (check);
 }

@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/08 10:39:32 by npineau           #+#    #+#              #
-#    Updated: 2017/10/21 18:14:42 by nathanael        ###   ########.fr        #
+#    Updated: 2017/10/24 11:52:31 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,9 @@ LINK	=	$(CC) -o $@ $^ $(L_FLAG)
 .PHONY: all clean fclean re
 
 all: $(PLIB) $(NAME)
+
+run: all
+	./lem-in < base.map
 
 ### LIBFT ###
 
