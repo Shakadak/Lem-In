@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 13:48:37 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/23 15:05:34 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/24 10:49:41 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ int				parse_room(char *line, t_room *room);
 int				step_ants(int fd, size_t *ants);
 int				step_links(int fd, t_rb *links, t_string *last_buffer);
 int				step_rooms(int fd, t_rb *rooms, t_string *last_buffer);
+
+int				parse_anthill(int fd, size_t *ants, t_rb *rooms, t_rb *links);
 #endif
