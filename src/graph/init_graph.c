@@ -6,13 +6,13 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 15:37:24 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/10/19 13:31:28 by mde-jesu         ###   ########.fr       */
+/*   Updated: 2017/10/24 11:00:29 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "libft.h"
-#include "lem-in.h"
+#include "lemin.h"
 #include <stdio.h>
 
 void	init_graph(t_room *rooms, int roomnbr, t_rb links, unsigned int *error)
