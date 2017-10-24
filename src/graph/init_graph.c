@@ -15,42 +15,62 @@
 #include "lem-in.h"
 #include <stdio.h>
 
-int		init_graph(t_room *rooms, int roomnbr, t_rb links)
+void	init_graph(t_room *rooms, int roomnbr, t_rb links, unsigned int *error)
 {
-	int		i;
-	int		j;
+	int		cnt;
 	int		ok;
 	t_room	*r1;
 	t_link	l;
 
-	i = 0;
 	while (rb_pop_front(&links, &l))
 	{
 		if (!ft_strcmp(l.fst, l.sec))
 			continue;
-		j = 0;
+		cnt = 0;
 		ok = 0;
 		r1 = NULL;
-		while (j < roomnbr)
+		while (cnt < roomnbr)
 		{
-			if (!ft_strcmp(rooms[j].name, l.fst)
-					|| !ft_strcmp(rooms[j].name, l.sec))
+			if (!ft_strcmp(rooms[cnt].name, l.fst)
+					|| !ft_strcmp(rooms[cnt].name, l.sec))
 			{
 				if (r1 == NULL)
-					r1 = &rooms[j];
+					r1 = &rooms[cnt];
 				else
 				{
-					go_link(r1, &rooms[j]);
+					go_link(r1, &rooms[cnt]);
 					ok++;
 				}
 			}
-			j++;
+			cnt++;
 		}
 		if (!ok)
-			return ok;
+			*error += LNK_ERR;
 	}
-	return 1;
 }
+
+//t_room	*find_start_and_error(t_room *rooms, int roomnbr, unsigned int *error)
+//{
+//	int		cnt;
+//	int		start;
+//	int		end;
+//	t_room	*sroom;
+//
+//	cnt = 0;
+//	start = 0;
+//	end = 0;
+//	while (cnt < roomnbr)
+//	{
+//		if (rooms[cnt].type == START)
+//			sroom = &rooms[start++];
+//		else if (rooms[cnt].type == END)
+//			end++;
+//		cnt++;
+//	}
+//	*error += (start != 1) ? SRT_ERR : 0;
+//	*error += (end < 1) ? END_ERR : 0;
+//	return (sroom);
+//}
 
 void	go_link(t_room *r1, t_room *r2)
 {

@@ -32,13 +32,16 @@ t_room	*test_create_rooms()
 
 int main()
 {
-	t_room	*rooms;
-	int		rnb;
-	t_rb	links;
-	t_link	link;
+	t_room			*rooms;
+	int				rnb;
+	unsigned int	error;
+	t_rb			links;
+	t_link			link;
+	//t_room			*start;
 
 	//t_link	l;
 
+	error = 0;
 	rnb = 4;
 	rb_new(5, sizeof(t_link), &links);
 
@@ -61,7 +64,11 @@ int main()
 	//rb_pop_front(&links, &l);
 
 	rooms = test_create_rooms();
-	if (!init_graph(rooms, rnb, links))
-		return (-1); // it's an error
+	init_graph(rooms, rnb, links, &error);
+	if (error != 0)
+		what_error(error);
 	print_graph(rooms, rnb);
+	//start = find_start_and_error(rooms, rnb, &error);
+	if (error != 0)
+		what_error(error);
 }
