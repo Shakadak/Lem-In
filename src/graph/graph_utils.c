@@ -13,11 +13,10 @@ void	print_graph(t_room const *rooms, size_t rnb)
 	i = 0;
 	while (i < rnb)
 	{
-		printf("room:'%s' have weight:'%i' and this connections is:\n",
+		printf("room:'%s' has weight:'%i' and its connections are:\n",
 				rooms[i].name, rooms[i].weight);
 		co = 0;
 		connections = (t_room **)rooms[i].conn.head;
-		printf("room connections capacity: %lu\n", rooms[i].conn.capacity);
 		while (co < rooms[i].conn.used)
 		{
 			printf("> %s-%s\n", rooms[i].name, connections[co]->name);
