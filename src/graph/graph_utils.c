@@ -1,25 +1,27 @@
-#include "structs.h"
-#include "lemin.h"
-#include "libft.h"
+#include "inc/structs.h"
+#include "inc/lemin.h"
+#include "libft/inc/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-void	print_graph(t_room *rooms, int rnb)
+void	print_graph(t_room const *rooms, size_t rnb)
 {
-	int		i;
-	t_lst	*co;
+	size_t	i;
+	size_t	co;
+	t_room	**connections;
 
 	i = 0;
 	while (i < rnb)
 	{
 		printf("room:'%s' have weight:'%i' and this connections is:\n",
 				rooms[i].name, rooms[i].weight);
-		co = rooms[i].conn;
-		while (co != NULL)
+		co = 0;
+		connections = (t_room **)rooms[i].conn.head;
+		printf("room connections capacity: %lu\n", rooms[i].conn.capacity);
+		while (co < rooms[i].conn.used)
 		{
-			printf("> %s-%s\n", rooms[i].name,
-					(char *)((t_room *)co->content)->name);
-			co = co->next;
+			printf("> %s-%s\n", rooms[i].name, connections[co]->name);
+			co += 1;
 		}
 		i++;
 	}

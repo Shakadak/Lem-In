@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 12:23:39 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/10/24 15:35:51 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/25 13:01:49 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@ t_room	*test_create_rooms()
 	if (!rooms)
 		return (NULL);
 	rooms[0].name = ft_strdup("0");
+	rb_new(2, sizeof(t_room *), &rooms[0].conn);
 	rooms[1].name = ft_strdup("1");
+	rb_new(2, sizeof(t_room *), &rooms[1].conn);
 	rooms[2].name = ft_strdup("2");
+	rb_new(2, sizeof(t_room *), &rooms[2].conn);
 	rooms[3].name = ft_strdup("3");
+	rb_new(2, sizeof(t_room *), &rooms[3].conn);
 	return (rooms);
 }
 

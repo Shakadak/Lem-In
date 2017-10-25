@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 13:36:04 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/10/23 12:16:25 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/25 11:59:39 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct		s_room
 	t_room_type		type;
 	t_coor			coord;
 	char			*name;
-	t_lst			*conn;
+	t_rb			conn;
 	int				weight;
 }					t_room;
 
