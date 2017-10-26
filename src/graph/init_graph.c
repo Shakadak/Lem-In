@@ -49,28 +49,31 @@ void	init_graph(t_room *rooms, size_t roomnbr, t_rb links, unsigned int *error)
 	}
 }
 
-//t_room	*find_start_and_error(t_room *rooms, int roomnbr, unsigned int *error)
-//{
-//	int		cnt;
-//	int		start;
-//	int		end;
-//	t_room	*sroom;
-//
-//	cnt = 0;
-//	start = 0;
-//	end = 0;
-//	while (cnt < roomnbr)
-//	{
-//		if (rooms[cnt].type == START)
-//			sroom = &rooms[start++];
-//		else if (rooms[cnt].type == END)
-//			end++;
-//		cnt++;
-//	}
-//	*error += (start != 1) ? SRT_ERR : 0;
-//	*error += (end < 1) ? END_ERR : 0;
-//	return (sroom);
-//}
+t_room	*find_start_and_error(t_room *rooms, int roomnbr, unsigned int *error)
+{
+	int		cnt;
+	int		start;
+	int		end;
+	t_room	*sroom;
+
+	cnt = 0;
+	start = 0;
+	end = 0;
+	while (cnt < roomnbr)
+	{
+		if (rooms[cnt].type == START)
+		{
+			sroom = &rooms[cnt];
+			start++;
+		}
+		else if (rooms[cnt].type == END)
+			end++;
+		cnt++;
+	}
+	*error += (start != 1) ? SRT_ERR : 0;
+	*error += (end < 1) ? END_ERR : 0;
+	return (sroom);
+}
 
 void	go_link(t_room *r1, t_room *r2)
 {
