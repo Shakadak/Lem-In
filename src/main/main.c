@@ -26,18 +26,22 @@ t_room	*test_create_rooms()
 
 	rooms[0].name = ft_strdup("0");
 	rooms[0].type = START;
+	rooms[0].weight = -1;
 	rb_new(2, sizeof(t_room *), &rooms[0].conn);
 
 	rooms[1].name = ft_strdup("1");
-	rooms[3].type = NORMAL;
+	rooms[1].type = NORMAL;
+	rooms[1].weight = -1;
 	rb_new(2, sizeof(t_room *), &rooms[1].conn);
 
 	rooms[2].name = ft_strdup("2");
-	rooms[3].type = NORMAL;
+	rooms[2].type = NORMAL;
+	rooms[2].weight = -1;
 	rb_new(2, sizeof(t_room *), &rooms[2].conn);
 
 	rooms[3].name = ft_strdup("3");
 	rooms[3].type = END;
+	rooms[3].weight = -1;
 	rb_new(2, sizeof(t_room *), &rooms[3].conn);
 
 	return (rooms);
@@ -83,6 +87,9 @@ int main()
 	start = find_start_and_error(rooms, rnb, &error);
 	if (error != 0)
 		what_error(error);
+	printf("preinit weight\n");
+	init_weight(start, &error);
+	print_graph(start, rnb);
 
 //	printf("\n----------\n\n");
 //	if (get_anthill(&ants, &rooms, &rnb, &links))

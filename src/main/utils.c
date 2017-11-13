@@ -12,6 +12,8 @@ void	what_error(unsigned int error)
 		printf("No end detected\n");
 	if (error == (error | LNK_ERR))
 		printf("Error when linking rooms\n");
+	if (error == (error | STC_ERR))
+		printf("Start haven't connection\n");
 	if (error == (error | OTH_ERR))
 		printf("an unidentified error is detected\n");
 }

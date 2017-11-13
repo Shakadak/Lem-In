@@ -16,7 +16,8 @@
 # define SRT_ERR 1
 # define END_ERR 2
 # define LNK_ERR 4
-# define OTH_ERR 8
+# define STC_ERR 8
+# define OTH_ERR 16
 
 void	init_graph(t_room *rooms, size_t roomnbr, t_rb links, unsigned int *error);
 void	go_link(t_room *r1, t_room *r2);
@@ -24,5 +25,7 @@ void	print_graph(t_room const *rooms, size_t rnb);
 t_room	*find_start_and_error(t_room *rooms, int roomnbr, unsigned int *error);
 void	what_error(unsigned int error);
 int		get_anthill(size_t *ants, t_room **rooms, size_t *rooms_n, t_rb *links);
+void	init_weight(t_room *start, unsigned int *error);
+void	recursive_weight(t_rb *queu, int weight, size_t cnt);
 
 #endif

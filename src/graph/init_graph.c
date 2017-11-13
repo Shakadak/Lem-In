@@ -49,6 +49,53 @@ void	init_graph(t_room *rooms, size_t roomnbr, t_rb links, unsigned int *error)
 	}
 }
 
+void	recursive_weight(t_rb *queu, int weight, size_t cnt)
+{
+	t_room	*room;
+	size_t	co;
+	size_t	nxt;
+
+	nxt = 0;
+	printf("weight in queu is %i\n", weight);
+	while (cnt > 0)
+	{
+		room = NULL;
+		rb_pop_front(queu, &room);
+		cnt--;
+		printf("OK?\n");
+		printf("room->name =  %s\n", room->name);
+		if (room->weight > 0 || room->type == START)
+			continue;
+		printf("OK?\n");
+		room->weight = weight;
+		co = 0;
+		while (co < room->conn.used)
+			rb_push_back(queu, &room->conn.head[co++]);
+		nxt += co;
+	}
+	if (queu->used > 0 && nxt > 0)
+		recursive_weight(queu, weight+1, nxt);
+}
+
+void	init_weight(t_room *start, unsigned int *error)
+{
+	size_t	co;
+	t_rb	queu;
+
+	co = 0;
+	if (start->conn.used < 1)
+	{
+		error += STC_ERR;
+		return;
+	}
+	printf("co = %i\n", (int)start->conn.used);
+	rb_new(start->conn.used, sizeof(t_room *), &queu);
+	while (co < start->conn.used)
+		rb_push_back(&queu, &start->conn.head[co++]);
+	start->weight = 0;
+	recursive_weight(&queu, 1, start->conn.used);
+}
+
 t_room	*find_start_and_error(t_room *rooms, int roomnbr, unsigned int *error)
 {
 	int		cnt;
