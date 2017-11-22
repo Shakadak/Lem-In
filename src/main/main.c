@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 12:23:39 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/10/25 13:01:49 by npineau          ###   ########.fr       */
+/*   Updated: 2017/10/27 10:37:20 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int main()
 
 	//rb_pop_front(&links, &l);
 
-	rooms = test_create_rooms();
+	/*rooms = test_create_rooms();
 	init_graph(rooms, rnb, links, &error);
 	if (error != 0)
 		what_error(error);
@@ -77,13 +77,17 @@ int main()
 	if (error != 0)
 		what_error(error);
 
-	printf("\n----------\n\n");
+	printf("\n----------\n\n");*/
 	if (get_anthill(&ants, &rooms, &rnb, &links))
 	{
 		init_graph(rooms, rnb, links, &error);
 		if (error == 0)
 		{
 			print_graph(rooms, rnb);
+		}
+		else
+		{
+			what_error(error);
 		}
 	}
 	return (0);
