@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 15:37:24 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/10/25 12:42:59 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/22 14:08:00 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void	init_graph(t_room *rooms, size_t roomnbr, t_rb links, unsigned int *error)
 
 void	recursive_weight(t_rb *queu, int weight, size_t cnt)
 {
-	t_room	r;
-	t_room	**room;
+	t_room	*room;
 	t_room	**tco;
 	size_t	co;
 	size_t	nxt;
@@ -60,15 +59,14 @@ void	recursive_weight(t_rb *queu, int weight, size_t cnt)
 	nxt = 0;
 	while (cnt > 0)
 	{
-		rb_pop_front(queu, &r);
-		room = (t_room **)&r;
+		rb_pop_front(queu, &room);
 		cnt--;
-		if ((*room)->weight > 0 || (*room)->type == START)
+		if (room->weight > 0 || room->type == START)
 			continue;
-		(*room)->weight = weight;
+		room->weight = weight;
 		co = 0;
-		tco = (t_room **)(*room)->conn.head;
-		while (co < (*room)->conn.used)
+		tco = (t_room **)room->conn.head;
+		while (co < room->conn.used)
 			rb_grow_push_back(queu, &tco[co++]);
 		nxt += co;
 	}
