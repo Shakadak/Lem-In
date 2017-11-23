@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 10:19:10 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/24 11:55:33 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/23 09:38:04 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,7 @@ static int	step_ants_go(int fd, size_t *ants, t_rb *rooms, t_rb *links)
 int			parse_anthill(int fd, size_t *ants, t_rb *rooms, t_rb *links)
 {
 	int	check;
+
 	check = step_ants_go(fd, ants, rooms, links);
-	if (!check)
-	{
-		ft_putendl("ERROR");
-	}
 	return (check);
 }

@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/08 10:39:32 by npineau           #+#    #+#              #
-#    Updated: 2017/10/24 12:06:55 by npineau          ###   ########.fr        #
+#    Updated: 2017/11/23 09:39:56 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,9 @@ run: all
 	./lem-in < base_ants_noline.map
 	./lem-in < base_ants_num+letters.map
 	./lem-in < base.map
+	./lem-in < base_2.map
+	./lem-in < base_rooms_command+comment.map
+	./lem-in < base_multiple_commands.map
 
 ### LIBFT ###
 
