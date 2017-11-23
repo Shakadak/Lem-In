@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:22:27 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/22 14:26:33 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/23 09:35:16 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	step_room(int fd, t_room *room, t_string *last_buffer)
 			parse_command(buff, &room->type);
 			free(buff);
 			if (!(check = (get_next_line(fd, &buff) > 0)))
-				break;
+				break ;
 			ft_putendl(buff);
 		}
 		if (check)
