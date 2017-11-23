@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 12:23:39 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/11/23 14:32:40 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/23 15:49:19 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,29 @@ int main()
 	size_t			rnb;
 	t_rb			links;
 	t_room			*start;
+	t_room			*end;
 
 
 	error = 0;
 
 	get_anthill(&ants, &rooms, &rnb, &links);
 	init_graph(rooms, rnb, links, &error);
+	print_graph(rooms, rnb);
 	start = find_start_and_error(rooms, rnb, &error);
-	if (error == 0)
+	if (check_rooms(rooms, rnb, &error))
 	{
-		print_graph(rooms, rnb);
-		init_weight(start, &error);
-		print_graph(start, rnb);
+		end = find_type(END, rooms, rnb);
+		printf("found end\n");
+		if (!error)
+		{
+			print_graph(rooms, rnb);
+			weight_from_end(end);
+			print_graph(start, rnb);
+		}
+		else
+		{
+			what_error(error);
+		}
 	}
 	else
 	{
