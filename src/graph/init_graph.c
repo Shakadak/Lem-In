@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 15:37:24 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/11/22 14:08:00 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/23 14:48:57 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_graph(t_room *rooms, size_t roomnbr, t_rb links, unsigned int *error)
 			cnt++;
 		}
 		if (!ok)
-			*error += LNK_ERR;
+			*error |= LNK_ERR;
 	}
 }
 
@@ -83,7 +83,7 @@ void	init_weight(t_room *start, unsigned int *error)
 	co = 0;
 	if (start->conn.used < 1)
 	{
-		error += STC_ERR;
+		*error |= STC_ERR;
 		return;
 	}
 	//printf("co = %i\n", (int)start->conn.used);
@@ -116,8 +116,8 @@ t_room	*find_start_and_error(t_room *rooms, int roomnbr, unsigned int *error)
 			end++;
 		cnt++;
 	}
-	*error += (start != 1) ? SRT_ERR : 0;
-	*error += (end < 1) ? END_ERR : 0;
+	*error |= (start != 1) ? SRT_ERR : 0;
+	*error |= (end < 1) ? END_ERR : 0;
 	return (sroom);
 }
 
