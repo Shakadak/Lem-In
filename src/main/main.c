@@ -6,15 +6,13 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 12:23:39 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/11/24 07:43:44 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 08:32:24 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/structs.h"
 #include "inc/lemin.h"
 #include "libft/inc/libft.h"
-//#include <stdlib.h>
-#include <stdio.h>/////////////
 
 
 

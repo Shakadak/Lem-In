@@ -6,15 +6,13 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:50:51 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/24 07:49:49 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 08:33:12 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/lemin.h"
 #include "inc/structs.h"
 #include "libft/inc/libft.h"
-
-#include <stdio.h>/////////////
 
 void	weight_from_end(t_room *end)
 {
@@ -28,18 +26,14 @@ void	weight_from_end(t_room *end)
 	rb_grow_push_back(&queue, &end);
 	while (rb_pop_front(&queue, &room))
 	{
-		printf("popopopop\n");
 		i = 0;
 		rs = (t_room **)room->conn.head;
-		printf("Ook ook ook!\n");
 		while (i < room->conn.used)
 		{
 			if (rs[i]->weight == -1)
 			{
-				printf("weighting\n");
 				rs[i]->weight = room->weight + 1;
 				rb_grow_push_back(&queue, &rs[i]);
-				printf("push push push push\n");
 			}
 			i += 1;
 		}
