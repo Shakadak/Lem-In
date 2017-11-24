@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:50:51 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/24 07:44:23 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 07:49:49 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,21 @@ void	weight_from_end(t_room *end)
 
 	end->weight = 0;
 	rb_new(16, sizeof(t_room *), &queue);
-	rb_push_back(&queue, end);
+	rb_grow_push_back(&queue, &end);
 	while (rb_pop_front(&queue, &room))
 	{
 		printf("popopopop\n");
 		i = 0;
 		rs = (t_room **)room->conn.head;
+		printf("Ook ook ook!\n");
 		while (i < room->conn.used)
 		{
 			if (rs[i]->weight == -1)
 			{
+				printf("weighting\n");
 				rs[i]->weight = room->weight + 1;
 				rb_grow_push_back(&queue, &rs[i]);
+				printf("push push push push\n");
 			}
 			i += 1;
 		}
