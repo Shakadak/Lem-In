@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ants.c                                       :+:      :+:    :+:   */
+/*   check_rooms.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 13:53:38 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/24 11:34:50 by npineau          ###   ########.fr       */
+/*   Created: 2017/11/23 15:39:44 by npineau           #+#    #+#             */
+/*   Updated: 2017/11/24 07:43:24 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft/inc/libft.h"
+#include "inc/lemin.h"
 
-int	parse_ants(const char *line, size_t *ret)
+int	check_rooms(t_room *rooms, size_t qty, unsigned int *err)
 {
-	t_pair	pair;
-	int		check;
-	char	*leftover;
-	char	*ants_n;
+	size_t	i;
+	int		start;
+	int		end;
 
-	pair = strspan(ft_isdigit, line);
-	ants_n = fst(pair);
-	leftover = snd(pair);
-	check = !ft_strempty(ants_n) && ft_strempty(leftover);
-	if (check)
+	i = 0;
+	start = 0;
+	end = 0;
+	while (i < qty)
 	{
-		*ret = ft_atoi(ants_n);
+		if (rooms[i].type == START)
+		{
+			start += 1;
+		}
+		else if (rooms[i].type == END)
+		{
+			end += 1;
+		}
+		i += 1;
 	}
-	free(ants_n);
-	free(leftover);
-	return (check);
+	*err |= (start != 1 ? SRT_ERR : 0);
+	*err |= (end != 1 ? END_ERR : 0);
+	return (!*err);
 }

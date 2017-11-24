@@ -1,48 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_command.c                                    :+:      :+:    :+:   */
+/*   step_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 10:46:24 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/23 10:14:27 by npineau          ###   ########.fr       */
+/*   Created: 2017/10/23 11:03:42 by npineau           #+#    #+#             */
+/*   Updated: 2017/10/24 11:55:40 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft/inc/libft.h"
+#include "inc/parsing.h"
 #include "inc/structs.h"
 
-static int	is_hash(char c)
+int	step_ants(int fd, size_t *ants)
 {
-	return (c == '#');
-}
+	t_string	buff;
+	int			check;
 
-int			parse_command(char *line, t_room_type *type)
-{
-	t_pair	pair;
-	int		check;
-
-	pair = strspan(is_hash, line);
-	check = !ft_strempty(pair.fst) && ft_strequ(pair.fst, "##")
-		&& !ft_strempty(pair.snd);
-	if (check)
+	if ((check = (get_next_line(fd, &buff) > 0)))
 	{
-		if (ft_strequ(pair.snd, "start"))
+		ft_putendl(buff);
+		if (parse_comment(buff))
 		{
-			*type = START;
+			free(buff);
+			check = (get_next_line(fd, &buff) > 0);
+			ft_putendl(buff);
 		}
-		else if (ft_strequ(pair.snd, "end"))
+		if (check)
 		{
-			*type = END;
-		}
-		else
-		{
-			check = !check;
+			check = parse_ants(buff, ants);
+			free(buff);
 		}
 	}
-	free(pair.fst);
-	free(pair.snd);
 	return (check);
 }

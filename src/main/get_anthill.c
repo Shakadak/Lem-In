@@ -1,48 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_command.c                                    :+:      :+:    :+:   */
+/*   get_anthill.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 10:46:24 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/23 10:14:27 by npineau          ###   ########.fr       */
+/*   Created: 2017/10/24 10:34:43 by npineau           #+#    #+#             */
+/*   Updated: 2017/11/24 14:41:21 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 #include "libft/inc/libft.h"
 #include "inc/structs.h"
+#include "inc/parsing.h"
 
-static int	is_hash(char c)
+int	get_anthill(size_t *ants, t_rb *rooms, size_t *rooms_n, t_rb *links)
 {
-	return (c == '#');
-}
-
-int			parse_command(char *line, t_room_type *type)
-{
-	t_pair	pair;
 	int		check;
 
-	pair = strspan(is_hash, line);
-	check = !ft_strempty(pair.fst) && ft_strequ(pair.fst, "##")
-		&& !ft_strempty(pair.snd);
-	if (check)
+	if (!rb_new(16, sizeof(t_link), links))
 	{
-		if (ft_strequ(pair.snd, "start"))
-		{
-			*type = START;
-		}
-		else if (ft_strequ(pair.snd, "end"))
-		{
-			*type = END;
-		}
-		else
-		{
-			check = !check;
-		}
+		return (0);
 	}
-	free(pair.fst);
-	free(pair.snd);
+	else if (!rb_new(16, sizeof(t_room), rooms))
+	{
+		rb_free(links);
+		return (0);
+	}
+	else
+	{
+		check = parse_anthill(STDIN_FILENO, ants, rooms, links);
+		*rooms_n = rooms->used;
+	}
 	return (check);
 }

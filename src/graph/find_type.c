@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ants.c                                       :+:      :+:    :+:   */
+/*   find_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 13:53:38 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/24 11:34:50 by npineau          ###   ########.fr       */
+/*   Created: 2017/11/23 15:27:18 by npineau           #+#    #+#             */
+/*   Updated: 2017/11/23 15:37:05 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft/inc/libft.h"
+#include "inc/lemin.h"
+#include "inc/structs.h"
 
-int	parse_ants(const char *line, size_t *ret)
+t_room	*find_type(
+		t_room_type type,
+		t_room *rooms,
+		int roomnbr)
 {
-	t_pair	pair;
-	int		check;
-	char	*leftover;
-	char	*ants_n;
+	int		i;
+	t_room	*room;
 
-	pair = strspan(ft_isdigit, line);
-	ants_n = fst(pair);
-	leftover = snd(pair);
-	check = !ft_strempty(ants_n) && ft_strempty(leftover);
-	if (check)
+	i = 0;
+	room = NULL;
+	while (i < roomnbr)
 	{
-		*ret = ft_atoi(ants_n);
+		if (rooms[i].type == type)
+		{
+			room = &rooms[i];
+			break ;
+		}
+		i += 1;
 	}
-	free(ants_n);
-	free(leftover);
-	return (check);
+	return (room);
 }

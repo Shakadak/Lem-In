@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ants.c                                       :+:      :+:    :+:   */
+/*   get_lightest_neighbor.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 13:53:38 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/24 11:34:50 by npineau          ###   ########.fr       */
+/*   Created: 2017/11/24 10:30:19 by npineau           #+#    #+#             */
+/*   Updated: 2017/11/24 12:25:01 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft/inc/libft.h"
+#include "inc/structs.h"
 
-int	parse_ants(const char *line, size_t *ret)
+t_room	*get_lightest_neighbor(t_room room)
 {
-	t_pair	pair;
-	int		check;
-	char	*leftover;
-	char	*ants_n;
+	t_room	*lightest;
+	t_room	**neighbors;
+	size_t	i;
 
-	pair = strspan(ft_isdigit, line);
-	ants_n = fst(pair);
-	leftover = snd(pair);
-	check = !ft_strempty(ants_n) && ft_strempty(leftover);
-	if (check)
+	i = 0;
+	neighbors = (t_room **)room.conn.head;
+	lightest = NULL;
+	while (i < room.conn.used)
 	{
-		*ret = ft_atoi(ants_n);
+		if (lightest == NULL || neighbors[i]->weight < lightest->weight)
+		{
+			lightest = neighbors[i];
+		}
+		i += 1;
 	}
-	free(ants_n);
-	free(leftover);
-	return (check);
+	return (lightest);
 }
