@@ -6,11 +6,11 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 15:39:44 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/23 15:46:24 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 07:43:24 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lemin.h"
+#include "inc/lemin.h"
 
 int	check_rooms(t_room *rooms, size_t qty, unsigned int *err)
 {
@@ -35,5 +35,5 @@ int	check_rooms(t_room *rooms, size_t qty, unsigned int *err)
 	}
 	*err |= (start != 1 ? SRT_ERR : 0);
 	*err |= (end != 1 ? END_ERR : 0);
-	return (!err);
+	return (!*err);
 }

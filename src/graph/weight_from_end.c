@@ -6,13 +6,15 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:50:51 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/23 15:16:52 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 07:44:23 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/lemin.h"
 #include "inc/structs.h"
 #include "libft/inc/libft.h"
+
+#include <stdio.h>/////////////
 
 void	weight_from_end(t_room *end)
 {
@@ -26,6 +28,7 @@ void	weight_from_end(t_room *end)
 	rb_push_back(&queue, end);
 	while (rb_pop_front(&queue, &room))
 	{
+		printf("popopopop\n");
 		i = 0;
 		rs = (t_room **)room->conn.head;
 		while (i < room->conn.used)
