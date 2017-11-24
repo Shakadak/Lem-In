@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 12:23:39 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/11/24 14:38:10 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 14:45:50 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(void)
 	size_t			ants;
 	t_rb			rooms;
 	unsigned int	error;
-	size_t			rnb;
+	size_t			rnb; // TODO remove this thing, it's useless now.
 	t_rb			links;
 	t_room			*start;
 	t_room			*end;
