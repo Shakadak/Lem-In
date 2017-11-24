@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 13:36:04 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/10/25 11:59:39 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 10:25:48 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,11 @@ typedef struct		s_link
 	char			*fst;
 	char			*sec;
 }					t_link;
+
+typedef struct		s_ant
+{
+	size_t			id;
+	t_room			*room;
+}					t_ant;
 
 #endif
