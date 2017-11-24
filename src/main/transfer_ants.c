@@ -6,16 +6,23 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 11:04:20 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/24 12:32:18 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 14:18:22 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> ////////////
+#include <stdlib.h>
 #include "inc/lemin.h"
+#include "libft/inc/libft.h"
 
 static void	show_ant_move(t_ant *ant, char **str)
 {
-	asprintf(str, "L%lu-%s", ant->id, ant->room->name);
+	char	*id;
+
+	id = ft_itoa(ant->id);
+	*str = malloc(sizeof(char)
+			* (1 + ft_strlen(id) + 1 + ft_strlen(ant->room->name) + 1));
+	mstpcpy(mstpcpy(mstpcpy(mstpcpy(*str, "L"), id), "-"), ant->room->name);
+	free(id);
 }
 
 void		print_ants(t_rb ants)
@@ -28,6 +35,8 @@ void		print_ants(t_rb ants)
 	buff = mstr_join_with(" ", (char**)moves.head, moves.used, &len);
 	write(1, buff, len);
 	write(1, "\n", 1);
+	rb_iter(moves, (void(*)(void*))ft_strdel);
+	free(moves.b_start);
 }
 
 void		step_forward(t_ant *ant)
@@ -59,4 +68,5 @@ void		transfer_ants(size_t ants, t_room *start)
 			rb_pop_front(&ants_q, NULL);
 		}
 	}
+	free(ants_q.b_start);
 }
