@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 12:23:39 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/11/24 08:54:43 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 12:28:51 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int main(void)
 {
-	size_t	ants;
+	size_t			ants;
 	t_room			*rooms;
 	unsigned int	error;
 	size_t			rnb;
@@ -37,9 +37,11 @@ int main(void)
 		end = find_type(END, rooms, rnb);
 		if (!error)
 		{
-			print_graph(rooms, rnb);
 			weight_from_end(end);
-			print_graph(start, rnb);
+			if (start->weight == -1)
+				ft_putendl("ERROR");
+			else
+				transfer_ants(ants, start);
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: mde-jesu <mde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 15:41:02 by mde-jesu          #+#    #+#             */
-/*   Updated: 2017/11/24 10:43:53 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 12:13:47 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ t_room	*find_type(
 		t_room *rooms,
 		int roomnbr);
 int		check_rooms(t_room *rooms, size_t qty, unsigned int *err);
+void	transfer_ants(size_t ants, t_room *start);
 
 #endif

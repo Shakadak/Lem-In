@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 10:30:19 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/24 10:47:08 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/24 12:25:01 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_room	*get_lightest_neighbor(t_room room)
 
 	i = 0;
 	neighbors = (t_room **)room.conn.head;
+	lightest = NULL;
 	while (i < room.conn.used)
 	{
 		if (lightest == NULL || neighbors[i]->weight < lightest->weight)
