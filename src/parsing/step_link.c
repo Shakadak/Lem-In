@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 11:39:10 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/24 13:39:40 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/27 09:43:22 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@ static int	step_link(int fd, t_link *link, t_string *last_buffer)
 	{
 		if (*last_buffer == NULL && !ft_strempty(buff))
 			ft_putendl(buff);
-		if ((check = step_comment(fd, &buff, last_buffer)))
+		check = step_comment(fd, &buff, last_buffer);
+		if ((check = parse_link(buff, link)))
 		{
-			if ((check = parse_link(buff, link)))
-			{
-				free(buff);
-				*last_buffer = NULL;
-			}
+			free(buff);
+			buff = NULL;
+			*last_buffer = NULL;
+		}
+		else
+		{
+			*last_buffer = buff;
 		}
 	}
 	return (check);
@@ -62,11 +65,7 @@ int			step_links(int fd, t_rb *links, t_string *last_buffer)
 
 	if ((check = step_link(fd, &link, last_buffer)))
 	{
-		if (rb_full(*links))
-		{
-			rb_resize(links, links->capacity * 2);
-		}
-		rb_push_back(links, &link);
+		rb_grow_push_back(links, &link);
 	}
 	return (check);
 }

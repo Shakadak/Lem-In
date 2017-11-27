@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 11:04:20 by npineau           #+#    #+#             */
-/*   Updated: 2017/11/24 14:18:22 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/27 08:43:28 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		print_ants(t_rb ants)
 	buff = mstr_join_with(" ", (char**)moves.head, moves.used, &len);
 	write(1, buff, len);
 	write(1, "\n", 1);
+	free(buff);
 	rb_iter(moves, (void(*)(void*))ft_strdel);
 	free(moves.b_start);
 }
