@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 13:48:37 by npineau           #+#    #+#             */
-/*   Updated: 2017/10/24 10:49:41 by npineau          ###   ########.fr       */
+/*   Updated: 2017/11/28 14:02:11 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef enum	e_parse_step
 
 int				spaces(t_string buff, t_string *leftover);
 int				spaces1(t_string buff, t_string *leftover);
-int				parse_nat(t_string in, t_string *out, int *nat);
 int				parse_int(t_string in, t_string *out, int *integer);
 int				parse_name(t_string in, t_string *out, t_string *name);
 int				parse_lexed_name(t_string in, t_string *out, t_string *name);
