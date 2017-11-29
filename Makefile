@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/08 10:39:32 by npineau           #+#    #+#              #
-#    Updated: 2017/11/24 12:31:03 by npineau          ###   ########.fr        #
+#    Updated: 2017/11/29 13:13:16 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ CC		:=	clang
 C_FLAG	:=	-Wall -Wextra -Werror -pedantic
 O_FLAG	:=	-O3
 L_FLAG	:=	-L $(DIRLIB) -lft
-C_INC	:=	-I $(DIRINC) -I $(DIRLIB)/$(DIRINC) -I .
+C_INC	:=	-I $(DIRINC) -I $(DIRLIB) -I $(DIRLIB)/$(DIRINC) -I .
 
 COMPIL	=	$(CC) -o $@ -c $< $(C_INC) $(C_FLAG) $(O_FLAG)
 LINK	=	$(CC) -o $@ $^ $(L_FLAG)
